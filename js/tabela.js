@@ -25,5 +25,16 @@ function changeNames(){
 	$("#sala").text('Sala');
 	$("#setor").text('Setor');
 	$("#centro").text("Centro");
+
+	//Usuarios
+	$("#user_id").text("ID");
+	$("#username").text("Nome do Usuário");
+	$("#login").text("Login");
+	$("#password").text("Senha (criptografada)");
+	$("#email").text("E-mail");
+	$("#root").text("Administrador");
+
+
+	
 }
 

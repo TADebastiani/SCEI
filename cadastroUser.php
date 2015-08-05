@@ -101,7 +101,7 @@ protegeRoot();
 					</div>
 					<div class="input-field col s6">
 						<input type="email" id="email" name="email" required>
-						<label for="email">Email</label>
+						<label for="email">E-mail</label>
 					</div>
 				</div>
 				<div class="row">

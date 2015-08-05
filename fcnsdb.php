@@ -61,7 +61,7 @@
 		if (@mysqli_num_rows($result) == 0){ 
 			echo("<b>Nenhum resultado retornado.</b><br>"); 
 		}else { 
-			echo "<table border='1' class='tablesorter striped'> 
+			echo "<table border='1' class='tablesorter centered striped'> 
 				<thead> 
 				<tr>"; 
 			for($i = 0;$i < mysqli_num_fields($result);$i++) 
@@ -69,7 +69,7 @@
 				$name = mysqli_fetch_field($result)->name;
 				echo "<th id='".$name."'>" . $name . "</th>"; 
 			}
-			echo "<th id='edit'>Aterar</th>";
+			echo "<th id='edit'>Aterar / Excluir</th>";
 			echo "</tr> 
 				</thead> 
 				<tbody>"; 
@@ -81,8 +81,11 @@
 				{ 
 					echo("<td>" . $row[$j] . "</td>"); 
 				} 
-				echo "<td id='edit".$i."'>...</td>";
-				echo "</tr>"; 
+				echo "<td id='edit".$i."'>";
+				echo "<a href='#' onClick='alteraTupla(".$row[0].")'>Alterar</a>";
+				echo " / ";
+				echo "<a href='#' onClick='excluiTupla(".$row[0].")'>Excluir</a>";
+				echo "</td></tr>"; 
 			} 
 			echo "</tbody> 
 				</table>"; 

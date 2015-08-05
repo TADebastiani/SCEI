@@ -2,6 +2,7 @@
 include "seguranca.php"; // Inclui o arquivo com o sistema de segurança
 protegePagina(); // Chama a função que protege a página
 protegeRoot();
+include "alteraUserV.php";
  ?>
 <!DOCTYPE html>
 <html>
@@ -15,16 +16,10 @@ protegeRoot();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-	<!-- Tablesorter -->
-	<script src="./tablesorter/jquery.tablesorter.js"></script>
-	<link rel="stylesheet" href="./tablesorter/themes/blue/custom_style.css">
-	<!-- Custom -->
-	<script src="./js/gerenciaUser.js"></script>
-	<script src="./js/tabela.js"></script>
-	<script src="./js/index.js"></script>
-	<script src="./js/verItem.js"></script>
+	<!-- -->
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>Gerenciar Usuários</title>
+	<script src="./js/cadastroUser.js"></script>
+	<title>Cadastro de Usuário</title>
 </head>
 <body>
 	<header>
@@ -98,11 +93,45 @@ protegeRoot();
 	</header>
 	<main>
 		<div class="container">
-			<h1>Gerenciar Usuários</h1>
-			
-			<div id="tabela">
-				<?php include 'gerenciaUserV.php'; ?>
-			</div>
+			<h1>Alteração de Usuário</h1>
+			<form method="post" class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="text" id="username" name="username" <?php echo "value='".$valorTupla['username']."'"; ?> required>
+						<label for="username">Nome do Usário</label>
+					</div>
+					<div class="input-field col s6">
+						<input type="email" id="email" name="email" <?php echo "value=".$valorTupla['email']; ?> required>
+						<label for="email">E-mail</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s4">
+						<input type="text" id="login" name="login" length="10" <?php echo "value=".$valorTupla['login']; ?> required>
+						<label for="login">Login</label>
+					</div>
+					<div class="input-field col s4">
+						<input type="password" id="password" name="password" length="10" <?php echo "value=".$valorTupla['password']; ?> required>
+						<label for="password">Senha</label>
+					</div>
+					<div class="input-field col s4">
+						<input type="password" id="password2" name="password2" length="10" <?php echo "value=".$valorTupla['password']; ?> required>
+						<label for="password2">Confirme a Senha</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s2 offset-s5">
+						<input type="checkbox" id="root" name="root" <?php echo ($valorTupla['root']=='Y'? 'checked':''); ?> value="Y">
+						<label for="root">Administrador</label>
+					</div>
+				</div>
+				<br>
+				<p class="center-align">
+					<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">Confirmar
+						<i class="mdi-content-send right"></i>
+					</button>
+				</p>
+			</form>
 		</div>
 	</main>
 	<footer class="page-footer">
@@ -120,3 +149,4 @@ protegeRoot();
 	</footer>
 </body>
 </html>
+

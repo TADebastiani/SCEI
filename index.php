@@ -101,7 +101,7 @@ protegePagina(); // Chama a função que protege a página
 						  <div class='col s12 m12 l6 collection with-header'>
 						  	<h5 class='collection-header'>Usuários</h5>
 						  	<a class='collection-item' href=\"./cadastroUser.php\">Criar</a>
-						  	<a class='collection-item' href=\"./soon.html\">Gerenciar</a>
+						  	<a class='collection-item' href=\"./gerenciaUser.php\">Gerenciar</a>
 						  </div>
 						  </div>
 					  </div>
