@@ -1,3 +1,11 @@
+nav, footer.page-footer {
+	background-color: #009688;
+}
+
+footer.page-footer .footer-copyright{
+	background-color: rgba(51,51,51,0.3);
+}
+
 body {
 	display: flex;
 	min-height: 100vh;

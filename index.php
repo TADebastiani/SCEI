@@ -13,9 +13,9 @@ protegePagina(); // Chama a função que protege a página
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-	<!-- -->
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<!-- Custom -->
 	<script src="./js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<title>UDESC TI - CEO</title>
 </head>
 <body>
@@ -111,7 +111,6 @@ protegePagina(); // Chama a função que protege a página
 		?>
 	</div>
 	</main>
-	
 	<footer class="page-footer">
 		<div class="container">
 			<div class="row">

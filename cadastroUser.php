@@ -15,9 +15,10 @@ protegeRoot();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-	<!-- -->
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
+	<!-- Custom -->
+	<script src="./js/index.js"></script>
 	<script src="./js/cadastroUser.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<title>Cadastro de Usuário</title>
 </head>
 <body>

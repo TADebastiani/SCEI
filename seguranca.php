@@ -73,7 +73,7 @@ function protegePagina() {
 */
 function protegeRoot() {
 	if ($_SESSION['usuarioRoot'] == 'N'){
-		expulsaVisitante();
+		header("Location: ./index.php");
 	}
 }
 /**

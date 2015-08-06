@@ -62,20 +62,24 @@
 		}
 		*/
 
-		$query = "UPDATE udescti.user SET ";
-		$i=0;
-		foreach ($valores as $key => $value) {
-			if ($i == sizeof($valores)-1){
-				$query .= "$key='$value' ";
-			}else {
-				$query .= "$key='$value', ";
-			}
-			$i++;
-		}
-		$query .= "WHERE user_id='$userid'";
+		if ($key != 'user_id'){
+			if ($_POST[$key] != $value){
+				$query = "UPDATE udescti.user SET ";
+				$i=0;
+				foreach ($valores as $key => $value) {
+					if ($i == sizeof($valores)-1){
+						$query .= "$key='$value' ";
+					}else {
+						$query .= "$key='$value', ";
+					}
+					$i++;
+				}
+				$query .= "WHERE user_id='$userid'";
 
-		//echo $query;
-		query($query);
+				//echo $query;
+				query($query);
+			}
+		}
 		
 		header("Location: ./gerenciaUser.php");
 	}

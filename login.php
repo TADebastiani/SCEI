@@ -10,37 +10,53 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
-	<!-- -->
+	<!-- Custom -->
+	<script src="./js/index.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>Cadastro de Usuário</title>
+	<title>Login</title>
 </head>
 <body>
-	<nav>
-		<div class="nav-wrapper">
-			
-		</div>
-	</nav>
-	<div class="container">
-		<h1 class="center-align">Login</h1>
-		<form method="post" action="loginV.php" class="col s12">
-			<div class="row">
-				<div class="input-field col s6 offset-s3">
-					<input type="text" id="login" name="login" length="10" required>
-					<label for="login">Login</label>
-				</div>
-				<div class="input-field col s6 offset-s3">
-					<input type="password" id="password" name="password" length="10" required>
-					<label for="password">Senha</label>
-				</div>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center">?SCTI-CEO?</a>
 			</div>
-			<br>
-			<p class="center-align">
-				<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">
-				Conectar
-					<i class="mdi-content-send right"></i>
-				</button>
-			</p>
-		</form>
-	</div>
-</body>
+		</nav>
+	</header>
+	<main>
+		<div class="section">
+			<div class="row container">
+				<div class="col s6 offset-s3">
+					<img class="responsive-img" src="./img/logo_udesc_ceo.png">
+				</div>
+				<form method="post" action="loginV.php" class="col s12">
+					<div class="row">
+						<div class="input-field col s6 offset-s3">
+							<input type="text" id="login" name="login" length="10" required>
+							<label for="login">Login</label>
+						</div>
+						<div class="input-field col s6 offset-s3">
+							<input type="password" id="password" name="password" length="10" required>
+							<label for="password">Senha</label>
+						</div>
+					</div>
+					<br>
+					<p class="center-align">
+						<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">
+						Conectar
+							<i class="mdi-content-send right"></i>
+						</button>
+					</p>
+				</form>
+			</div>
+		</div>
+	</main>
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				© 2015 Copyright Text
+				<a class="grey-text text-lighten-4 right">UDESC TI</a>
+			</div>
+		</div>
+	</footer>
 </html>

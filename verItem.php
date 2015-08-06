@@ -1,3 +1,7 @@
+<?php
+include "seguranca.php"; // Inclui o arquivo com o sistema de segurança
+protegePagina(); // Chama a função que protege a página
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +100,7 @@
 			<div class="input-field row">
 				<legend>Filtro:</legend>
 				<div class="col s3">
-					<input type="radio" id="nenhum" name="filtro" value="" class="filtro" selected>
+					<input type="radio" id="nenhum" name="filtro" value="" class="filtro" checked>
 					<label for="nenhum">Nenhum</label>
 				</div>
 				<div class="col s3">
