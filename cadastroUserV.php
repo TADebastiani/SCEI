@@ -9,13 +9,13 @@ if(isset($_POST['submit'])){
 						'email' => $_POST['email'],
 						'root' => isset($_POST['root'])? $_POST['root']: 'N');
 	
-	$query = "INSERT INTO udescti.user ";
+	$query = "INSERT INTO udescti.usuario ";
 	$query .= "(".implode(", ", array_keys($arrayName)).")";
 	$query .= " VALUES ('".implode("', '", $arrayName)."')";
 
 	query($query);
 	$login = $arrayName['login'];
-	$query = "SELECT * FROM udescti.user WHERE login = '$login'";
+	$query = "SELECT * FROM udescti.usuario WHERE login = '$login'";
 
 	PrintTable(query($query));
 }

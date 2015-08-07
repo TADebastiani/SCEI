@@ -4,11 +4,11 @@
 
 	if (isset($_POST['excluir'])){
 		$excluir = $_POST['excluir'];
-		$query = "DELETE FROM udescti.user WHERE user_id='$excluir'";
+		$query = "DELETE FROM udescti.usuario WHERE user_id='$excluir'";
 		query($query);
 	}
 
-	$query = "SELECT * FROM udescti.user";
+	$query = "SELECT * FROM udescti.usuario";
 
 	PrintEditTable(query($query));
 

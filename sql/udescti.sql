@@ -1,9 +1,9 @@
 DROP DATABASE IF EXISTS udescti;
 
-CREATE DATABASE IF NOT EXISTS udescti
+CREATE DATABASE udescti
 	DEFAULT CHARACTER SET "utf8";
 
-CREATE TABLE udescti.user (
+CREATE TABLE udescti.usuario (
 	user_id INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(30) NOT NULL,
 	login VARCHAR(10) NOT NULL,
@@ -21,21 +21,22 @@ CREATE TABLE udescti.servidor (
 	) DEFAULT CHARSET=utf8;
 
 CREATE TABLE udescti.local (
-	sala INT NOT NULL,
-	centro VARCHAR(30) NOT NULL,
 	setor VARCHAR(30) NOT NULL,
-	CONSTRAINT local_pk PRIMARY KEY (sala)
+	centro VARCHAR(30) NOT NULL,
+	sala INT NOT NULL,
+	CONSTRAINT local_pk PRIMARY KEY (setor,centro)
 	) DEFAULT CHARSET=utf8;
 
-CREATE TABLE udescti.item (
+CREATE TABLE udescti.equipamento (
 	patrimonio INT NOT NULL,
 	servidor VARCHAR(30) NOT NULL,
-	local INT NOT NULL,
+	lsetor VARCHAR(30) NOT NULL,
+	lcentro VARCHAR(30) NOT NULL,
 	tipo VARCHAR(15) NOT NULL,
 	descr TEXT NOT NULL,
-	CONSTRAINT item_pk PRIMARY KEY (patrimonio),
-	CONSTRAINT item_servidor_fk FOREIGN KEY (servidor) REFERENCES udescti.servidor(nome),
-	CONSTRAINT item_local_fk FOREIGN KEY (local) REFERENCES udescti.local(sala)
+	CONSTRAINT equipamento_pk PRIMARY KEY (patrimonio),
+	CONSTRAINT equipamento_servidor_fk FOREIGN KEY (servidor) REFERENCES udescti.servidor(nome),
+	CONSTRAINT equipamento_local_fk FOREIGN KEY (lsetor, lcentro) REFERENCES udescti.local (setor, centro)
 	) DEFAULT CHARSET=utf8;
 
 CREATE TABLE udescti.historico (
@@ -43,5 +44,5 @@ CREATE TABLE udescti.historico (
 	data DATE NOT NULL,
 	hdescr TEXT NOT NULL,
 	CONSTRAINT historico_pk PRIMARY KEY (patrimonio, data),
-	CONSTRAINT historico_item_fk FOREIGN KEY (patrimonio) REFERENCES udescti.item(patrimonio)
+	CONSTRAINT historico_equipamento_fk FOREIGN KEY (patrimonio) REFERENCES udescti.equipamento(patrimonio)
 	) DEFAULT CHARSET=utf8;

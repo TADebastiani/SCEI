@@ -65,10 +65,10 @@ if (isset($_POST["submit"])) {
 		}
 	}
 
-	$query = "INSERT INTO udescti.item VALUES ('$patrimonio','$servidor','$local','$tipo','$descr')";
+	$query = "INSERT INTO udescti.equipamento VALUES ('$patrimonio','$servidor','$local','$tipo','$descr')";
 	query($query);
 
-	$query = "SELECT * FROM udescti.item WHERE patrimonio='$patrimonio'";
+	$query = "SELECT * FROM udescti.equipamento WHERE patrimonio='$patrimonio'";
 	PrintTable(query($banco,$query));
 }
 

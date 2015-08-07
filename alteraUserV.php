@@ -5,7 +5,7 @@
 	if (isset($_GET['userid'])){
 		$userid = $_GET['userid'];
 
-		$query = "SELECT * FROM udescti.user WHERE user_id='$userid'";
+		$query = "SELECT * FROM udescti.usuario WHERE user_id='$userid'";
 
 		$result = query($query);
 
@@ -64,7 +64,7 @@
 
 		if ($key != 'user_id'){
 			if ($_POST[$key] != $value){
-				$query = "UPDATE udescti.user SET ";
+				$query = "UPDATE udescti.usuario SET ";
 				$i=0;
 				foreach ($valores as $key => $value) {
 					if ($i == sizeof($valores)-1){

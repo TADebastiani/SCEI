@@ -12,6 +12,10 @@ body {
 	flex-direction: column;
 }
 
+.header {
+	color: #004d40;
+}
+
 main {
 	flex: 1 0 auto;
 }

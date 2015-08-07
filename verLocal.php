@@ -30,7 +30,7 @@ protegePagina(); // Chama a função que protege a página
 				<a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<ul id="drop-patrimonio" class="dropdown-content">
+					<ul id="drop-equipamentos" class="dropdown-content">
 						<li><a href="./cadastroItem.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
 						<li><a href="./verItem.php">Relatório<i class="material-icons left">pageview</i></a></li>
@@ -46,7 +46,7 @@ protegePagina(); // Chama a função que protege a página
 						<li class="active"><a>Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="#">Home<i class="material-icons left">home</i></a></li>
-					<li><a class="dropdown-button" href="#!" data-activates="drop-patrimonio">Patrimônio<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-servidor">Servidor<i class="material-icons left">person</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
@@ -55,9 +55,9 @@ protegePagina(); // Chama a função que protege a página
 				<ul id="mobile-sidenav" class="side-nav">
 					<li><a href="#">Home<i class="material-icons left">home</i></a></li>
 					<li class="no-padding">
-						<ul id="coll-patrimonio" class="collapsible collapsible-accordion">
+						<ul id="coll-equipamentos" class="collapsible collapsible-accordion">
 							<li class="bold">
-								<a class="collapsible-header">Patrimônio<i class="material-icons">work</i></a>
+								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
 										<li><a href="./cadastroItem.php">Cadastro<i class="material-icons left">assignment</i></a></li>
