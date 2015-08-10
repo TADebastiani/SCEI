@@ -27,6 +27,14 @@ CREATE TABLE udescti.local (
 	CONSTRAINT local_pk PRIMARY KEY (setor,centro)
 	) DEFAULT CHARSET=utf8;
 
+CREATE TABLE udescti.equip_img (
+	img_id TINYINT NOT NULL AUTO_INCREMENT,
+	marca VARCHAR(30) NOT NULL,
+	modelo VARCHAR(30) NOT NULL,
+	imagem LONGBLOB NOT NULL,
+	CONSTRAINT equipimg_pk PRIMARY KEY (`img_id`)
+	) DEFAULT CHARSET=utf8;
+
 CREATE TABLE udescti.equipamento (
 	patrimonio INT NOT NULL,
 	servidor VARCHAR(30) NOT NULL,

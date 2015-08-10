@@ -34,8 +34,5 @@ function changeNames(){
 	$("#password").text("Senha (criptografada)");
 	$("#email").text("E-mail");
 	$("#root").text("Administrador");
-
-
-	
 }
 
