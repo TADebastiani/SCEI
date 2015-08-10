@@ -5,8 +5,9 @@ $(document).ready(function(){
 		$(document).on("focus", ".select2", function () {
 			$(this).prev().select2('open');
 		});
-		$("#servidor").load("./cadastroItemV.php?servidor='true'");
-		$("#local").load("./cadastroItemV.php?local='true'");
+		$("#servidor").load("./cadastrar-equipamento-v.php?servidor='true'");
+		$("#lsetor").load("./cadastrar-equipamento-v.php?lsetor='true'");
+		$("#lcentro").load("./cadastrar-equipamento-v.php?lcentro='true'");
 
 
 		$('.nobreak').hide();

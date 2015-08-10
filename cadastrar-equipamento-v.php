@@ -5,8 +5,9 @@ if (isset($_POST["submit"])) {
 
 	
 	$patrimonio = $_POST['patrimonio'];
-	$servidor = $_POST['servidor'];
-	$local = $_POST['local'];
+	$servidor = trim($_POST['servidor']);
+	$lsetor = trim($_POST['lsetor']);
+	$lcentro = trim($_POST['lcentro']);
 	$tipo = $_POST['tipo'];
 	$descr = '';
 
@@ -65,19 +66,23 @@ if (isset($_POST["submit"])) {
 		}
 	}
 
-	$query = "INSERT INTO udescti.equipamento VALUES ('$patrimonio','$servidor','$local','$tipo','$descr')";
+	$query = "INSERT INTO udescti.equipamento VALUES ('$patrimonio','$servidor','$lsetor','$lcentro','$tipo','$descr')";
 	query($query);
 
 	$query = "SELECT * FROM udescti.equipamento WHERE patrimonio='$patrimonio'";
-	PrintTable(query($banco,$query));
+	PrintTable(query($query));
 }
 
 if (isset($_GET['servidor'])) {
 	$query = "SELECT nome FROM udescti.servidor";
 	SelectValues(query($query));
 }
-if (isset($_GET['local'])) {
-	$query = "SELECT sala FROM udescti.local";
+if (isset($_GET['lsetor'])) {
+	$query = "SELECT setor FROM udescti.local group by 1";
+	SelectValues(query($query));
+}
+if (isset($_GET['lcentro'])) {
+	$query = "SELECT centro FROM udescti.local group by 1";
 	SelectValues(query($query));
 }
 

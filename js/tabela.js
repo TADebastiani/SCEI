@@ -10,12 +10,13 @@ $(document).ready(function(){
 
 })
 function changeNames(){
-	// Item
-	$("#patrimonio").text('Patrimônio');
-	$("#servidor").text('Servidor Responsável');
-	$("#local").text('Sala');
-	$("#tipo").text('Tipo');
-	$("#descr").text('Descrição');
+	// Equipamento
+	$("table #patrimonio").text('Patrimônio');
+	$("table #servidor").text('Servidor Responsável');
+	$("table #lsetor").text('Setor');
+	$("table #lcentro").text('Centro');
+	$("table #tipo").text('Tipo');
+	$("table #descr").text('Descrição');
 
 	// Servidor
 	$("#nome").text('Nome');

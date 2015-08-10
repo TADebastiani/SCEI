@@ -29,19 +29,19 @@ protegeRoot();
 				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li><a href="./cadastroItem.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verItem.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
 						<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verServidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li><a href="./cadastroLocal.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+						<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verLocal.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
@@ -58,8 +58,8 @@ protegeRoot();
 								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastroItem.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verItem.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -69,7 +69,7 @@ protegeRoot();
 								<div class="collapsible-body">
 									<ul>
 										<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verServidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -78,8 +78,8 @@ protegeRoot();
 								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastroLocal.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verLocal.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -112,7 +112,7 @@ protegeRoot();
 				</p>
 			</form>
 			<div>
-				<?php require 'cadastroServidorV.php'; ?>
+				<?php require 'cadastrar-servidor-v.php'; ?>
 			</div>
 		</div>
 	</main>
@@ -124,7 +124,7 @@ protegeRoot();
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				© 2015 Copyright Text
+				Copyright © <?php echo date("Y"); ?> Text
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>

@@ -20,6 +20,7 @@ protegeRoot();
 	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- -->
 	<script src="./js/cadastroItem.js"></script>
+	<script src="./js/tabela.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<title>Cadastro de Equipamentos</title>
 </head>
@@ -33,17 +34,17 @@ protegeRoot();
 					<ul id="drop-equipamentos" class="dropdown-content">
 						<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verItem.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
-						<li><a href="./cadastroServidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verServidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li><a href="./cadastroLocal.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+						<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./verLocal.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
@@ -61,7 +62,7 @@ protegeRoot();
 								<div class="collapsible-body">
 									<ul>
 										<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verItem.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
 									</ul>
 								</div>
 							</li>
@@ -69,8 +70,8 @@ protegeRoot();
 								<a class="collapsible-header">Servidor<i class="material-icons left">person</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastroServidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verServidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										
 									</ul>
 								</div>
@@ -79,8 +80,8 @@ protegeRoot();
 								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastroLocal.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./verLocal.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 									</ul>
 								</div>
 							</li>
@@ -95,13 +96,18 @@ protegeRoot();
 			<h1 class="header">Cadastro de Equipamentos</h1>
 			<form method="post" class="col s12">
 				<div class="row">
-					<div class="input-field col s6">
+					<div class="input-field col s4">
 						<input type="text" class="validate" id="patrimonio" name="patrimonio" required>
 						<label for="patrimonio">Patrimônio</label>
 					</div>
-					<div class="input-field col s6">
-						<legend for="local">Local</legend>
-						<select type="text" id="local" name="local" required>
+					<div class="input-field col s4">
+						<legend for="local">Setor</legend>
+						<select type="text" id="lsetor" name="lsetor" required>
+						</select>
+					</div>
+					<div class="input-field col s4">
+						<legend for="local">Centro</legend>
+						<select type="text" id="lcentro" name="lcentro" required>
 						</select>
 					</div>
 				</div>
@@ -146,21 +152,21 @@ protegeRoot();
 					</div>
 					<div class="row">
 						<div class="input-field col s4">
+							<legend for="ventrada">Voltagem de Entrada</legend>
 							<select name="ventrada" id="ventrada" class="nobreak-input">
 								<option selected disabled value="">Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>
 								<option value="110/220V">110/220 V</option>	
 							</select>
-							<label for="ventrada">Voltagem  de Entrada</label>
 						</div>
 						<div class="input-field col s4">
+							<legend for="vsaida">Voltagem de Saída</legend>
 							<select name="vsaida" id="vsaida" class="nobreak-input">
 								<option selected disabled value="">Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>
 							</select>
-							<label for="vsaida">Voltagem de Saída</label>
 						</div>
 						<div class="input-field col s4">
 							<input type="text" id="plugue" name="plugue" class="nobreak-input validate">
@@ -214,7 +220,7 @@ protegeRoot();
 <!-- MONI/PROJ -->
 				<fieldset class="moniproj">
 					<legend>Monitor / Projetor</legend>
-					<div class="row">
+					<div class="row col s12">
 						<div class="input-field col s4">
 							<input type="text" id="pmarca" name="pmarca" class="moniproj-input validate">
 							<label for="pmarca">Marca</label>
@@ -223,14 +229,14 @@ protegeRoot();
 							<input type="text" id="pmodelo" name="pmodelo" class="moniproj-input validate">
 							<label for="pmodelo">Modelo</label>
 						</div>
-						<div class="input-field col s4">
+						<div class="input-field col s3">
+							<legend for="pvoltagem">Voltagem de Entrada</legend>
 							<select id="pvoltagem" name="pvoltagem">
 								<option selected disabled>Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>
 								<option value="110/220V">110/220 V</option>	
 							</select>
-							<label for="pvoltagem">Voltagem de Entrada</label>
 						</div>
 					</div>
 					<div class="row">
@@ -262,7 +268,7 @@ protegeRoot();
 				</p>
 			</form>
 			<div>
-			<?php require 'cadastroItemV.php'; ?>
+			<?php require 'cadastrar-equipamento-v.php'; ?>
 			</div>
 		</div>
 	</main>
@@ -274,7 +280,7 @@ protegeRoot();
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				© 2015 Copyright Text
+				Copyright © <?php echo date("Y"); ?> Text
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>

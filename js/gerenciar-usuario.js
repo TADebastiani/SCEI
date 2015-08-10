@@ -12,7 +12,7 @@ function excluiTupla(pk){
 		if (conf){
 			$.ajax({
 				type:'POST',
-				url:'gerenciaUserV.php',
+				url:'gerenciar-usuario-v.php',
 				data:'excluir='+pk,
 				success: function(data){ 
 					if(data){
@@ -27,5 +27,5 @@ function excluiTupla(pk){
 }
 
 function alteraTupla(pk){
-	window.location = './alteraUser.php?userid='+pk;
+	window.location = './editar-usuario.php?userid='+pk;
 }

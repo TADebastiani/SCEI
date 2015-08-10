@@ -99,7 +99,7 @@
 			for ($i=0; $i < mysqli_num_rows($result); $i++) { 
 				for ($j=0; $j < mysqli_num_fields($result); $j++) { 
 					$valor = mysqli_fetch_row($result)[$j];
-					echo "<option value=".$valor.">".$valor."</option>";
+					echo "<option value='".$valor."'>".$valor."</option>";
 				}
 			}
 		}

@@ -5,18 +5,24 @@ protegePagina(); // Chama a função que protege a página
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv=\"refresh\" content=\"1; url=authentication.php?url=index.php\">
-	<meta charset="utf-8">
+	<meta charset='utf-8'>
 	<!-- jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Validation Plugin -->
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
 	 <!-- Materialize -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<!-- Tablesorter -->
+	<script src="./tablesorter/jquery.tablesorter.js"></script>
+	<link rel="stylesheet" href="./tablesorter/themes/blue/custom_style.css">
 	<!-- Custom -->
+	<script src="./js/tabela.js"></script>
 	<script src="./js/index.js"></script>
+	<script src="./js/verItem.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>UDESC TI - CEO</title>
+	<title>Relatório dos Equipamentos</title>
 </head>
 <body>
 	<header>
@@ -28,7 +34,7 @@ protegePagina(); // Chama a função que protege a página
 					<ul id="drop-equipamentos" class="dropdown-content">
 						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
-						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li class="active"><a>Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
 						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
@@ -40,23 +46,23 @@ protegePagina(); // Chama a função que protege a página
 						<li class="divider"></li>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
-					<li class="active"><a href="#">Home<i class="material-icons left">home</i></a></li>
-					<li><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
+					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-servidor">Servidor<i class="material-icons left">person</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
 			<!-- MOBILE -->
 				<ul id="mobile-sidenav" class="side-nav">
-					<li class="active"><a href="#">Home<i class="material-icons left">home</i></a></li>
+					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li class="no-padding">
 						<ul id="coll-equipamentos" class="collapsible collapsible-accordion">
-							<li class="bold">
-								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
+							<li>
+								<a class="active collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
 										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li class="active"><a>Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -88,40 +94,42 @@ protegePagina(); // Chama a função que protege a página
 			</div>
 		</nav>
 	</header>
-
 	<main>
-	<div class="container">
-		<img class="responsive-img" src="./img/logo_udesc_ceo.png">
-		
-		<?php 
-		if( validaRoot() ) {
-			echo "<div class=\"row\">
-					<div class=\"col s12 m7\">
-					  <div class=\"card\">
-						<div class=\"card-content\">
-						  <pan class=\"card-title black-text\"><h4>Ferramentas Admnistrativas</h4></span>
-						  <div class='col s12 m12 l6 collection with-header'>
-						  	<h5 class='collection-header'>Usuários</h5>
-						  	<a class='collection-item' href=\"./cadastrar-usuario.php\">Criar</a>
-						  	<a class='collection-item' href=\"./gerenciar-usuario.php\">Gerenciar</a>
-						  </div>
-						  </div>
-					  </div>
-					</div>
-				  </div>";	
-		}
-		?>
-	</div>
+		<div class="container">
+			<h2 class="header">Relatório dos Equipamentos</h2>
+			<div class="input-field row">
+				<legend>Filtro:</legend>
+				<div class="col s3">
+					<input type="radio" id="nenhum" name="filtro" value="" class="filtro" checked>
+					<label for="nenhum">Nenhum</label>
+				</div>
+				<div class="col s3">
+					<input type="radio" id="fNobreak" name="filtro" value="Nobreak" class="filtro">
+					<label for="fNobreak">Nobreak</label>
+				</div>
+				<div class="col s3">
+					<input type="radio" id="fPC" name="filtro" value="PC" class="filtro">
+					<label for="fPC">PC</label>
+				</div>
+				<div class="col s3">
+					<input type="radio" id="fMonitor" name="filtro" value="Monitor" class="filtro">
+					<label for="fMonitor">Monitor</label>
+				</div>
+			</div>
+			<div id="tabela">
+				<?php require_once 'relatorio-equipamento-v.php'; ?>
+			</div>
+		</div>
 	</main>
 	<footer class="page-footer">
 		<div class="container">
 			<div class="row">
-				<span class="grey-text text-lighten-4"><?php echo "Usuário <span class='grey-text text-lighten-2'>".$_SESSION['usuarioNome']."</span> conectado ".($_SESSION['usuarioRoot']=='Y'? 'com' : 'sem')." direitos de Administrador" ?></span>
+				<span class="grey-text text-lighten-4"><?php echo "<span class='grey-text text-lighten-2'>".$_SESSION['usuarioNome']."</span> conectado ".($_SESSION['usuarioRoot']=='Y'? 'com' : 'sem')." direitos de Administrador" ?></span>
 			</div>
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
+				Copyright © <?php echo date("Y"); ?> Text
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>

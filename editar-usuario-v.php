@@ -56,32 +56,30 @@
 				}
 			}
 		}
-		/*
-		foreach ($valores as $key => $value) {
-			echo $key.": ".$value."<br>";
-		}
-		*/
-
-		if ($key != 'user_id'){
-			if ($_POST[$key] != $value){
-				$query = "UPDATE udescti.usuario SET ";
-				$i=0;
-				foreach ($valores as $key => $value) {
-					if ($i == sizeof($valores)-1){
-						$query .= "$key='$value' ";
-					}else {
-						$query .= "$key='$value', ";
-					}
-					$i++;
-				}
-				$query .= "WHERE user_id='$userid'";
-
-				//echo $query;
-				query($query);
-			}
-		}
 		
-		header("Location: ./gerenciaUser.php");
+		foreach ($valores as $key => $value) {
+			//echo $key.": ".$value."<br>";
+		
+			if ($key != 'user_id'){
+				if ($valorTupla[$key] != $value){
+					$query = "UPDATE udescti.usuario SET ";
+					$i=0;
+					foreach ($valores as $key => $value) {
+						if ($i == sizeof($valores)-1){
+							$query .= "$key='$value' ";
+						}else {
+							$query .= "$key='$value', ";
+						}
+						$i++;
+					}
+					$query .= "WHERE user_id='$userid'";
+
+					//echo $query;
+					query($query);
+				}
+			}
+			header("Location: ./gerenciar-usuario.php");
+		}
 	}
 
  ?>

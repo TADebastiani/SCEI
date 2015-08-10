@@ -29,7 +29,7 @@
 				<div class="col s6 offset-s3">
 					<img class="responsive-img" src="./img/logo_udesc_ceo.png">
 				</div>
-				<form method="post" action="loginV.php" class="col s12">
+				<form method="post" action="login-v.php" class="col s12">
 					<div class="row">
 						<div class="input-field col s6 offset-s3">
 							<input type="text" id="login" name="login" length="10" required>
@@ -54,7 +54,7 @@
 	<footer class="page-footer">
 		<div class="footer-copyright">
 			<div class="container">
-				© 2015 Copyright Text
+				Copyright © <?php echo date("Y"); ?> Text
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>
