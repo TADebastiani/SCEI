@@ -85,6 +85,10 @@ if (isset($_GET['lcentro'])) {
 	$query = "SELECT centro FROM udescti.local group by 1";
 	SelectValues(query($query));
 }
+if (isset($_GET['imagem'])) {
+	$query = "SELECT img_id FROM udescti.equip_img";
+	SelectImgValues(query($query));
+}
 
 /*
 

@@ -102,27 +102,27 @@ protegeRoot();
 					</div>
 					<div class="input-field col s4">
 						<legend for="local">Setor</legend>
-						<select type="text" id="lsetor" name="lsetor" required>
+						<select type="text" id="lsetor" name="lsetor" style='width:100%;' required>
 						</select>
 					</div>
 					<div class="input-field col s4">
 						<legend for="local">Centro</legend>
-						<select type="text" id="lcentro" name="lcentro" required>
+						<select type="text" id="lcentro" name="lcentro" style='width:100%;' required>
 						</select>
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-field col s6">			
+					<div class="input-field col s4">			
 						<!--
 						<input type="text" id="servidor" name="servidor" class="validate" required>
 						-->
 						<legend for="servidor">Servidor Responsável</legend>
-						<select id="servidor" name="servidor" class="validate">
+						<select id="servidor" name="servidor" class="validate" style='width:100%;'>
 						</select>
 					</div>
-					<div class="input-field col s6">
+					<div class="input-field col s4">
 						<legend for="tipo">Tipo do Equipamento</legend>
-						<select id="tipo" name="tipo" required>
+						<select id="tipo" style='width:100%;' name="tipo" required>
 							<option selected disabled value="">Selecione...</option>
 							<option value="Nobreak">No-break</option>
 							<option value="PC">Desktop</option>
@@ -131,10 +131,27 @@ protegeRoot();
 							<option value="Projetor">Projetor</option>
 						</select>
 					</div>
+					<div class="input-field col s4">
+						<a class="waves-effect waves-light btn modal-trigger" href="#modalImg">Imagem</a>
+
+						<!-- Modal Structure -->
+						<div id="modalImg" class="modal modal-fixed-footer">
+							<div class="modal-content">
+								<h4>Escolha a Imagem do Modelo</h4>
+								<?php 
+									$queryImg = "SELECT img_id FROM udescti.equip_img";
+									PrintImgTable(query($queryImg));
+								 ?>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="row modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				
-				<fieldset class="nobreak">
 <!-- NOBREAK -->				
+				<fieldset class="nobreak">
 					<legend>No-Break</legend>
 					<div class="row">
 						<div class="input-field col s4">
@@ -153,7 +170,7 @@ protegeRoot();
 					<div class="row">
 						<div class="input-field col s4">
 							<legend for="ventrada">Voltagem de Entrada</legend>
-							<select name="ventrada" id="ventrada" class="nobreak-input">
+							<select name="ventrada" id="ventrada" class="nobreak-input" style='width:100%;'>
 								<option selected disabled value="">Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>
@@ -162,7 +179,7 @@ protegeRoot();
 						</div>
 						<div class="input-field col s4">
 							<legend for="vsaida">Voltagem de Saída</legend>
-							<select name="vsaida" id="vsaida" class="nobreak-input">
+							<select name="vsaida" id="vsaida" class="nobreak-input" style='width:100%;'>
 								<option selected disabled value="">Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>
@@ -231,7 +248,7 @@ protegeRoot();
 						</div>
 						<div class="input-field col s3">
 							<legend for="pvoltagem">Voltagem de Entrada</legend>
-							<select id="pvoltagem" name="pvoltagem">
+							<select id="pvoltagem" name="pvoltagem" style='width:100%;'>
 								<option selected disabled>Selecione...</option>
 								<option value="110V">110 V</option>
 								<option value="220V">220 V</option>

@@ -91,6 +91,39 @@
 				</table>"; 
 		}
 	}
+	function PrintImgTable($result){     
+		if (@mysqli_num_rows($result) == 0){ 
+			echo("<b>Nenhum resultado retornado.</b><br>"); 
+		}else { 
+			echo "<table border='1' class='col s6 offset-s3 tablesorter centered striped'> 
+				<thead> 
+				<tr>"; 
+			for($i = 0;$i < mysqli_num_fields($result)-1;$i++) 
+			{ 
+				$name = mysqli_fetch_field($result)->name;
+				echo "<th id='".$name."'>" . $name . "</th>"; 
+			}
+			echo "<th id='edit'></th>";
+			echo "</tr> 
+				</thead> 
+				<tbody>"; 
+			for ($i = 0; $i < mysqli_num_rows($result); $i++) 
+			{ 
+				echo "<tr>"; 
+				$row = mysqli_fetch_row($result); 
+				for($j = 0;$j < mysqli_num_fields($result);$j++)  
+				{ 
+					echo "<td id='img".$row[$j]."'>";
+					echo "<img src='./ver-imagens.php?id=".$row[$j]."' class='col s9 materialboxed responssive-img'>";
+					echo "<span class='col s3 input-field'><input name=\"img\" type=\"radio\" id=\"test".$row[$j]."\" /><label for=\"test".$row[$j]."\">".$row[$j]."</label></span>";
+					echo "</td>";
+				} 
+				echo "</tr>"; 
+			} 
+			echo "</tbody> 
+				</table>"; 
+		}
+	}
 	function SelectValues($result){
 		if (@mysqli_num_rows($result) == 0){
 			echo "<option selected disabled>Nenhum item encontrado</option>";
@@ -104,4 +137,5 @@
 			}
 		}
 	}
+
 ?>

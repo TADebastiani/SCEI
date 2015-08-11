@@ -29,8 +29,7 @@ CREATE TABLE udescti.local (
 
 CREATE TABLE udescti.equip_img (
 	img_id TINYINT NOT NULL AUTO_INCREMENT,
-	marca VARCHAR(30) NOT NULL,
-	modelo VARCHAR(30) NOT NULL,
+	tipo VARCHAR(15) NOT NULL,
 	imagem LONGBLOB NOT NULL,
 	CONSTRAINT equipimg_pk PRIMARY KEY (`img_id`)
 	) DEFAULT CHARSET=utf8;
@@ -42,9 +41,11 @@ CREATE TABLE udescti.equipamento (
 	lcentro VARCHAR(30) NOT NULL,
 	tipo VARCHAR(15) NOT NULL,
 	descr TEXT NOT NULL,
+	imagem TINYINT NOT NULL,
 	CONSTRAINT equipamento_pk PRIMARY KEY (patrimonio),
 	CONSTRAINT equipamento_servidor_fk FOREIGN KEY (servidor) REFERENCES udescti.servidor(nome),
-	CONSTRAINT equipamento_local_fk FOREIGN KEY (lsetor, lcentro) REFERENCES udescti.local (setor, centro)
+	CONSTRAINT equipamento_local_fk FOREIGN KEY (lsetor, lcentro) REFERENCES udescti.local (setor, centro),
+	CONSTRAINT equipamento_imagem_fk FOREIGN KEY (imagem) REFERENCES udescti.equip_img (img_id)
 	) DEFAULT CHARSET=utf8;
 
 CREATE TABLE udescti.historico (

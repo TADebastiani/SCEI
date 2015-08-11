@@ -1,5 +1,5 @@
 <?php 
-	include 'fcnsdb';
+	include 'fcnsdb.php';
  ?>
 <!DOCTYPE html>
 <html>
@@ -48,15 +48,26 @@
 						}foreach ($_POST as $key => $value) {
 							echo "POST[".$key."]: ".$value."<br>";
 						}
-					}
-					$imagem = $FILES['img'];
-					if ($imagem['tmp_name'] != 'none') {
-						$fp = fopen($imagem['tmp_name'],"rb");
-						echo $fp."<br>";
-						$conteudo = fread($fp, $imagem['size']);
-						echo $conteudo."<br>";
+						$imagem = $_FILES['img'];
+						if ($imagem['tmp_name'] != 'none') {
+							$fp = fopen($imagem['tmp_name'],"rb");
+							$conteudo = fread($fp, $imagem['size']);
+							$conteudo = addslashes($conteudo);
+							fclose($fp);
 
+							$query = "INSERT INTO udescti.equip_img (tipo,imagem) VALUES ('teste','$conteudo')";
+
+							query($query);
+							echo "Imagem Salva!<br>";
+							echo "<a href='?id=1'>Visualizar</a>";
+						}
+						else{
+							echo "Erro ao carregar a Imagem!";
+						}
 					}
+
+					echo "<a href=\"ver-imagens.php?id=3\">Imagem 3</a>";
+  					echo "<img src='ver-imagens.php?id=3'>";
 				 ?>
 			</div>
 		</div>

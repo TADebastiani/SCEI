@@ -1,18 +1,21 @@
 $(document).ready(function(){
 		$(".dropdown-button").dropdown();
 		
-		$('select').select2();
+		
 		$(document).on("focus", ".select2", function () {
 			$(this).prev().select2('open');
 		});
+		
+		$('select').select2();
+
 		$("#servidor").load("./cadastrar-equipamento-v.php?servidor='true'");
 		$("#lsetor").load("./cadastrar-equipamento-v.php?lsetor='true'");
 		$("#lcentro").load("./cadastrar-equipamento-v.php?lcentro='true'");
-
-
+		
 		$('.nobreak').hide();
 		$('.pcnot').hide();
 		$('.moniproj').hide();
+
 
 		$('#tipo').on('change', function () {
 			if ($('#tipo').val() == 'Nobreak') {
@@ -71,4 +74,6 @@ $(document).ready(function(){
   $(".button-collapse").sideNav();
   // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   $('.collapsible').collapsible();
-	});
+  $('.modal-trigger').leanModal();
+  $('.materialboxed').materialbox();
+});
