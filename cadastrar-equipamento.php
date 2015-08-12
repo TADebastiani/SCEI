@@ -113,9 +113,6 @@ protegeRoot();
 				</div>
 				<div class="row">
 					<div class="input-field col s4">			
-						<!--
-						<input type="text" id="servidor" name="servidor" class="validate" required>
-						-->
 						<legend for="servidor">Servidor Responsável</legend>
 						<select id="servidor" name="servidor" class="validate" style='width:100%;'>
 						</select>
@@ -132,7 +129,8 @@ protegeRoot();
 						</select>
 					</div>
 					<div class="input-field col s4">
-						<a class="waves-effect waves-light btn modal-trigger" href="#modalImg">Imagem</a>
+						<legend>Imagem do Modelo</legend>
+						<a class="waves-effect waves-light btn modal-trigger" href="#modalImg">Escolher</a>
 
 						<!-- Modal Structure -->
 						<div id="modalImg" class="modal modal-fixed-footer">
@@ -144,7 +142,7 @@ protegeRoot();
 								 ?>
 							</div>
 							<div class="modal-footer">
-								<a href="#!" class="row modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+								<a href="#!" class="row modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
 							</div>
 						</div>
 					</div>
@@ -279,7 +277,7 @@ protegeRoot();
 					</div>
 				</fieldset>
 				<p class="center-align">
-					<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">Confirmar
+					<button class=" btn waves-effect waves-light" type="submit" id="submit" name="submit" value="confirmar">Confirmar
 						<i class="mdi-content-send right"></i>
 					</button>
 				</p>
@@ -297,7 +295,7 @@ protegeRoot();
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Copyright © <?php echo date("Y"); ?> Text
+				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>

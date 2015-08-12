@@ -6,20 +6,22 @@ protegeRoot();
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
+	<meta http-equiv=\"refresh\" content=\"1; url=authentication.php?url=index.php\">
+	<meta charset="utf-8">
 	<!-- jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!-- Validation Plugin -->
-	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
 	 <!-- Materialize -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<!-- Select2 -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Custom -->
 	<script src="./js/index.js"></script>
-	<script src="./js/cadastroUser.js"></script>
+	<script src="./js/cadastrar-imagem.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>Cadastro de Usuário</title>
+	<title>Cadastro de Imagem</title>
 </head>
 <body>
 	<header>
@@ -29,7 +31,7 @@ protegeRoot();
 				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+						<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
 						<li class="divider"></li>
 						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
@@ -43,24 +45,23 @@ protegeRoot();
 						<li class="divider"></li>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
-					<li class="active"><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
-					<li><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
+					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-servidor">Servidor<i class="material-icons left">person</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
 			<!-- MOBILE -->
 				<ul id="mobile-sidenav" class="side-nav">
-					<li class="active"><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
+					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li class="no-padding">
 						<ul id="coll-equipamentos" class="collapsible collapsible-accordion">
 							<li class="bold">
-								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
+								<a class=" active collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
 										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
-										<li class="divider"></li>
 									</ul>
 								</div>
 							</li>
@@ -70,7 +71,7 @@ protegeRoot();
 									<ul>
 										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
-										<li class="divider"></li>
+										
 									</ul>
 								</div>
 							</li>
@@ -80,7 +81,6 @@ protegeRoot();
 									<ul>
 										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
 										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
-										<li class="divider"></li>
 									</ul>
 								</div>
 							</li>
@@ -93,63 +93,39 @@ protegeRoot();
 	</header>
 	<main>
 		<div class="container">
-			<h1>Cadastro de Usuário</h1>
-			<form method="post" class="col s12">
+			<h1 class="header">Cadastro de Imagem</h1>
+			<form method="POST" enctype="multipart/form-data">
 				<div class="row">
-					<div class="input-field col s6">
-						<input type="text" id="username" name="username" required>
-						<label for="username">Nome do Usário</label>
+					<div class="col s3 input-field">
+						<legend for="tipo">Tipo do Equipamento</legend>
+						<select id="tipo" style='width:100%;' name="tipo" required>
+							<option selected disabled value="">Selecione...</option>
+							<option value="Nobreak">No-break</option>
+							<option value="PC">Desktop</option>
+							<option value="Notebook">Notebook</option>
+							<option value="Monitor">Monitor</option>
+							<option value="Projetor">Projetor</option>
+						</select>
 					</div>
-					<div class="input-field col s6">
-						<input type="email" id="email" name="email" required>
-						<label for="email">E-mail</label>
+					<div class="col s9 file-field input-field">
+						<div class="btn">
+							<span>Arquivo</span>
+							<input type="file" id="img" name="img" />
+						</div>
+						<input class="col s8  file-path validate" type="text"/>
 					</div>
 				</div>
-				<div class="row">
-					<div class="input-field col s4">
-						<input type="text" id="login" name="login" length="10" required>
-						<label for="login">Login</label>
-					</div>
-					<div class="input-field col s4">
-						<input type="password" id="password" name="password" length="10" required>
-						<label for="password">Senha</label>
-					</div>
-					<div class="input-field col s4">
-						<input type="password" id="password2" name="password2" length="10" required>
-						<label for="password2">Confirme a Senha</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s2 offset-s5">
-						<input type="checkbox" id="root" name="root" value="Y">
-						<label for="root">Administrador</label>
-					</div>
-				</div>
-				<br>
 				<p class="center-align">
-					<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">Confirmar
+					<button class=" btn waves-effect waves-light" type="submit" id="submit" name="submit" value="confirmar">Confirmar
 						<i class="mdi-content-send right"></i>
 					</button>
 				</p>
-			</form>
-			<div>
-				<?php include 'cadastrar-usuario-v.php'; ?>
+			</form>	
+
+			<div class="row col s6 offset-s4">
+				<?php require 'cadastrar-imagem-v.php'; ?>
 			</div>
 		</div>
 	</main>
-	<footer class="page-footer">
-		<div class="container">
-			<div class="row">
-				<span class="grey-text text-lighten-4"><?php echo "<span class='grey-text text-lighten-2'>".$_SESSION['usuarioNome']."</span> conectado ".($_SESSION['usuarioRoot']=='Y'? 'com' : 'sem')." direitos de Administrador" ?></span>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
-				<a class="grey-text text-lighten-4 right">UDESC TI</a>
-			</div>
-		</div>
-	</footer>
 </body>
 </html>
-

@@ -12,12 +12,14 @@ $(document).ready(function(){
 		$("#lsetor").load("./cadastrar-equipamento-v.php?lsetor='true'");
 		$("#lcentro").load("./cadastrar-equipamento-v.php?lcentro='true'");
 		
+		$('#submit').hide();
 		$('.nobreak').hide();
 		$('.pcnot').hide();
 		$('.moniproj').hide();
 
 
 		$('#tipo').on('change', function () {
+			$('#submit').show();
 			if ($('#tipo').val() == 'Nobreak') {
 				$(".pcnot-input").attr("required",false);
 				$('.pcnot').hide();
@@ -70,10 +72,14 @@ $(document).ready(function(){
 		});
 
 		
-  // Initialize collapse button
   $(".button-collapse").sideNav();
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
   $('.collapsible').collapsible();
-  $('.modal-trigger').leanModal();
+  $('.modal-trigger').leanModal({
+  		dismissible: false
+  });
   $('.materialboxed').materialbox();
 });
+
+function disableSubmit () {
+	
+}

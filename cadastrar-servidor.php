@@ -124,7 +124,7 @@ protegeRoot();
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Copyright © <?php echo date("Y"); ?> Text
+				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
 				<a class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>
