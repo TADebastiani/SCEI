@@ -81,5 +81,41 @@ $(document).ready(function(){
 });
 
 function disableSubmit () {
-	
+	 checkDrive = $('input:checkbox');
+	 checkConector = $('input:checkbox');
+	 count = 0;
+
+	for (var i=0; i<checkDrive.length; i++){
+		if(checkDrive[i].name != 'drive[]'){
+			delete checkDrive[i];
+			count++;
+		}
+	}
+	checkDrive.length-=count;
+	count =0;
+	for (var i=0; i<checkConector.length; i++){
+		if(checkConector[i].name != 'conector[]'){
+			delete checkConector[i];
+			count++;
+		}
+	}
+	var pos=0;
+	for (var i=0; i<checkConector.length; i++){
+		if (checkConector[i] != undefined){
+			checkConector[pos] = checkConector[i];
+			delete checkConector[i];
+			pos++;
+		}
+	}
+	checkConector.length-=count;
+}
+
+
+var pos=0;
+for (var i=0; i<checkConector.length; i++){
+	if (checkConector[i] != undefined){
+		checkConector[pos] = checkConector[i];
+		delete checkConector[i];
+		pos++;
+	}
 }
