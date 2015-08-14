@@ -130,8 +130,7 @@ protegeRoot();
 					</div>
 					<div class="input-field col s4">
 						<legend>Imagem do Modelo</legend>
-						<a class="waves-effect waves-light btn modal-trigger" href="#modalImg">Escolher</a>
-
+						<button id="img-modal" data-target="modalImg" class="btn modal-trigger" >Modal</button>
 						<!-- Modal Structure -->
 						<div id="modalImg" class="modal modal-fixed-footer">
 							<div class="modal-content">
