@@ -95,7 +95,7 @@ protegeRoot();
 		<div class="container">
 			<h1 class="header">Cadastro de Equipamentos</h1>
 			<form method="post" class="col s12">
-				<div class="row">
+				<div class="row header-input">
 					<div class="input-field col s4">
 						<input type="text" class="validate" id="patrimonio" name="patrimonio" required>
 						<label for="patrimonio">Patrimônio</label>
@@ -111,13 +111,13 @@ protegeRoot();
 						</select>
 					</div>
 				</div>
-				<div class="row">
-					<div class="input-field col s4">			
+				<div class="row ">
+					<div class="input-field col s4 header-input">			
 						<legend for="servidor">Servidor Responsável</legend>
 						<select id="servidor" name="servidor" class="validate" style='width:100%;'>
 						</select>
 					</div>
-					<div class="input-field col s4">
+					<div class="input-field col s4 header-input">
 						<legend for="tipo">Tipo do Equipamento</legend>
 						<select id="tipo" style='width:100%;' name="tipo" required>
 							<option selected disabled value="">Selecione...</option>
@@ -130,7 +130,7 @@ protegeRoot();
 					</div>
 					<div class="input-field col s4">
 						<legend>Imagem do Modelo</legend>
-						<button id="img-modal" data-target="modalImg" class="btn modal-trigger" >Modal</button>
+						<button id="img-modal" data-target="modalImg" class="btn modal-trigger" >Escolher</button>
 						<!-- Modal Structure -->
 						<div id="modalImg" class="modal modal-fixed-footer">
 							<div class="modal-content">

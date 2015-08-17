@@ -17,10 +17,13 @@ protegePagina(); // Chama a função que protege a página
 	<!-- Tablesorter -->
 	<script src="./tablesorter/jquery.tablesorter.js"></script>
 	<link rel="stylesheet" href="./tablesorter/themes/blue/custom_style.css">
+	<!-- Select2 -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Custom -->
 	<script src="./js/tabela.js"></script>
 	<script src="./js/index.js"></script>
-	<script src="./js/verItem.js"></script>
+	<script src="./js/relatorio-equipamento.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<title>Relatório dos Equipamentos</title>
 </head>
@@ -97,25 +100,39 @@ protegePagina(); // Chama a função que protege a página
 	<main>
 		<div class="container">
 			<h2 class="header">Relatório dos Equipamentos</h2>
-			<div class="input-field row">
-				<legend>Filtro:</legend>
-				<div class="col s3">
-					<input type="radio" id="nenhum" name="filtro" value="" class="filtro" checked>
-					<label for="nenhum">Nenhum</label>
+			<form method="post">
+				<div class="input-field row">
+					<h5>Filtro</h5>
+					<div class="col s3">
+						<input type="radio" id="nenhum" name="filtro" value="" class="filtro" checked>
+						<label for="nenhum">Nenhum</label>
+					</div>
+					<div class="col s3">
+						<input type="radio" id="fNobreak" name="filtro" value="Nobreak" class="filtro">
+						<label for="fNobreak">Nobreak</label>
+					</div>
+					<div class="col s3">
+						<input type="radio" id="fPC" name="filtro" value="PC" class="filtro">
+						<label for="fPC">PC</label>
+					</div>
+					<div class="col s3">
+						<input type="radio" id="fMonitor" name="filtro" value="Monitor" class="filtro">
+						<label for="fMonitor">Monitor</label>
+					</div>
 				</div>
-				<div class="col s3">
-					<input type="radio" id="fNobreak" name="filtro" value="Nobreak" class="filtro">
-					<label for="fNobreak">Nobreak</label>
+				<div class="row">
+					<div class="input-field col s4">
+						<legend for="local">Patrimonio</legend>
+						<select type="text" id="patrimonio" name="patrimonio" style='width:100%;' required>
+						</select>
+					</div>
+					<p class="right-align col s8">
+						<button class=" btn-large waves-effect waves-light" type="submit" id="filtrar" name="filtrar" value="confirmar">Confirmar
+							<i class="mdi-content-send right"></i>
+						</button>
+					</p>
 				</div>
-				<div class="col s3">
-					<input type="radio" id="fPC" name="filtro" value="PC" class="filtro">
-					<label for="fPC">PC</label>
-				</div>
-				<div class="col s3">
-					<input type="radio" id="fMonitor" name="filtro" value="Monitor" class="filtro">
-					<label for="fMonitor">Monitor</label>
-				</div>
-			</div>
+			</form>
 			<div id="tabela">
 				<?php require_once 'relatorio-equipamento-v.php'; ?>
 			</div>

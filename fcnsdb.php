@@ -115,7 +115,7 @@
 				{ 
 					echo "<td id='img".$row[$j]."'>";
 					echo "<img src='./ver-imagens.php?id=".$row[$j]."' class='col s9 materialboxed responssive-img'>";
-					echo "<span class='col s3 input-field'><input name=\"img\" type=\"radio\" id=\"test".$row[$j]."\" /><label for=\"test".$row[$j]."\">".$row[$j]."</label></span>";
+					echo "<span class='col s3 input-field'><input name=\"img\" type=\"radio\" id=\"image".$row[$j]."\" class=\"image-check\" value=\"image".$row[$j]."\" /><label for=\"image".$row[$j]."\">".$row[$j]."</label></span>";
 					echo "</td>";
 				} 
 				echo "</tr>"; 
@@ -128,7 +128,6 @@
 		if (@mysqli_num_rows($result) == 0){
 			echo "<option selected disabled>Nenhum item encontrado</option>";
 		}else {
-			echo "<option selected disabled>Selecione...</option>";
 			for ($i=0; $i < mysqli_num_rows($result); $i++) { 
 				for ($j=0; $j < mysqli_num_fields($result); $j++) { 
 					$valor = mysqli_fetch_row($result)[$j];

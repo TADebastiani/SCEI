@@ -3,24 +3,27 @@ $(document).ready(function(){
 			$(this).prev().select2('open');
 		});
 
-		checkDrive 		= $('input:checkbox[name="drive[]"]');
-		checkConector 	= $('input:checkbox[name="drive[]"]');
-		radioImg 		= $('input:radio');
+		inputDrive 		= $('input:checkbox[name="drive[]"]');
+		inputConector 	= $('input:checkbox[name="conector[]"]');
+		radioImg 		= $('.modal-content input:radio');
 
-		servidor 		= $("#servidor");
+		headerInput		= $(".header-input input, .header-input select");
+		patrimonio		= $("#patrimonio");
 		lSetor 			= $("#lsetor");
 		lCentro 		= $("#lcentro");
-		imgModal 		= $('#img-modal');
-		submit 			= $('#submit');
-		nobreak 		= $('.nobreak');
+		servidor 		= $("#servidor");
+		tipo 			= $("#tipo");
+		imgButton 		= $("#img-modal");
+		imageCheck		= $(".image-check");
+		submit 			= $("#submit");
+		nobreak 		= $(".nobreak");
 		nobreakInput 	= $(".nobreak-input");
-		pcnot 			= $('.pcnot');
+		pcnot 			= $(".pcnot");
 		pcnotInput 		= $(".pcnot-input");
-		moniproj 		= $('.moniproj');
+		moniproj 		= $(".moniproj");
 		moniprojInput 	= $(".moniproj-input")
-		tipo 			= $('#tipo');
-		
-		imgModal.attr("disabled",true);
+
+		imgButton.attr("disabled",true);
 		submit.hide();
 		submit.attr('disabled',true);
 		nobreak.hide();
@@ -31,14 +34,20 @@ $(document).ready(function(){
 		lSetor.load("./cadastrar-equipamento-v.php?lsetor='true'");
 		lCentro.load("./cadastrar-equipamento-v.php?lcentro='true'");
 
+		$('input, select').on('change', enableSubmit);
+
 		tipo.on('change', function () {
-			imgModal.attr('disabled')? imgModal.attr('disabled',false) : false;
+			imgButton.attr('disabled')? imgButton.attr('disabled',false) : false;
 			submit.show();
 
 			if (tipo.val() == 'Nobreak') {
 				pcnotInput.attr("required",false);
+				inputDrive.prop("checked",false);
+				pcnotInput.val("");
 				pcnot.hide();
 				moniprojInput.attr("required",false);
+				inputConector.prop("checked",false);
+				moniprojInput.val('');
 				moniproj.hide();
 
 				nobreak.show();
@@ -47,8 +56,11 @@ $(document).ready(function(){
 
 			else if (tipo.val() == 'PC') {
 				nobreakInput.attr("required",false);
+				nobreakInput.val('');
 				nobreak.hide();
 				moniprojInput.attr("required",false);
+				inputConector.prop("checked",false);
+				moniprojInput.val('');
 				moniproj.hide();
 				
 				pcnot.show();
@@ -57,8 +69,11 @@ $(document).ready(function(){
 
 			else if (tipo.val() == 'Notebook') {
 				nobreakInput.attr("required",false);
+				nobreakInput.val('');
 				nobreak.hide();
 				moniprojInput.attr("required",false);
+				inputConector.prop("checked",false);
+				moniprojInput.val('');
 				moniproj.hide();
 				
 				pcnot.show();
@@ -67,8 +82,11 @@ $(document).ready(function(){
 
 			else if (tipo.val() == 'Monitor' || tipo.val() == 'Projetor') {
 				nobreakInput.attr("required",false);
+				nobreakInput.val('');
 				nobreak.hide();
 				pcnotInput.attr("required",false);
+				inputDrive.prop("checked",false);
+				pcnotInput.val("");
 				pcnot.hide();
 
 				moniproj.show();
@@ -77,10 +95,15 @@ $(document).ready(function(){
 
 			else {
 				nobreakInput.attr("required",false);
+				nobreakInput.val('');
 				nobreak.hide();
 				pcnotInput.attr("required",false);
+				inputDrive.prop("checked",false);
+				pcnotInput.val("");
 				pcnot.hide();
 				moniprojInput.attr("required",false);
+				inputConector.prop("checked",false);
+				moniprojInput.val('');
 				moniproj.hide();
 			}
 		});
@@ -97,14 +120,43 @@ $(document).ready(function(){
 
 });
 
-function disableButtons () {
+function enableSubmit () {
 	// Easy way
-	var checkDrive 		= $('input:checkbox[name="drive[]"]');
-	var checkConector 	= $('input:checkbox[name="drive[]"]');
-	var radioImg 		= $('input:radio');
-	var tipo
+	
+	if( checkInputs(headerInput) && imageCheck.is(':checked') &&//
+	  ( checkInputs(nobreakInput) || //
+	  (checkInputs(pcnotInput) && inputDrive.is(':checked')) || //
+	  (checkInputs(moniprojInput) && inputConector.is(':checked')) ) ) {
+	  	console.log('yep');
+		submit.attr('disabled',false);
+	} else {
+		console.clear();
+		console.log("header: "+checkInputs(headerInput));
+		console.log("image: "+imageCheck.is(':checked'));
+		console.log("nobreak: "+checkInputs(nobreakInput));
+		console.log("pcnot: "+checkInputs(pcnotInput));
+		console.log("drive: "+inputDrive.is(':checked'));
+		console.log("moniproj: "+checkInputs(moniprojInput));
+		console.log("conector: "+inputConector.is(':checked'));
+		console.log('nope');
+		submit.attr('disabled',true);
+	}
+	
 }
 
+function checkInputs (input) {
+	var state;
+	
+	input.each(function() {
+		if( $(this).val() ){
+			state = true;
+		}else {
+			state = false;
+		}
+	})
+
+	return state;
+}
 
 /* Harder way
 
