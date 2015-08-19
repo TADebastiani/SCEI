@@ -8,7 +8,7 @@
 		query($query);
 	}
 
-	$query = "SELECT * FROM udescti.usuario";
+	$query = "SELECT user_id,username,login,email,root FROM udescti.usuario";
 
 	PrintEditTable(query($query));
 

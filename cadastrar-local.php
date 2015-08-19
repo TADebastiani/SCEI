@@ -13,6 +13,9 @@ protegeRoot();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<!-- Select2 -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Custom -->
 	<script src="./js/tabela.js"></script>
 	<script src="./js/index.js"></script>
@@ -24,16 +27,27 @@ protegeRoot();
 		<nav>
 			<div class="nav-wrapper">
 				<a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
+				<a href="#" class="brand-logo right">SCTI-CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php 
+						if( validaRoot() ) {
+						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<?php
+						if( validaRoot() ) {
+						echo '<li class="divider"></li>';
+						echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+						} ?>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
-						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
@@ -56,8 +70,15 @@ protegeRoot();
 								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+										} ?>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -66,7 +87,10 @@ protegeRoot();
 								<a class="collapsible-header">Servidor<i class="material-icons left">person</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
@@ -94,21 +118,28 @@ protegeRoot();
 			<h1 class="header">Cadastro de Local</h1>
 			<form method="post" class="col s12">
 				<div class="row">
-					<div class="input-field col s1">
-						<input type="text" id="sala" name="sala" class="validate" required>
-						<label for="sala">Sala</label>
-					</div>
 					<div class="input-field col s5">
 						<input type="text" id="setor" name="setor" class="validate" required>
 						<label for="setor">Setor</label>
 					</div>
 					<div class="input-field col s6">
-						<input type="text" id="centro" name="centro" class="validate" required>
-						<label for="centro">Centro</label>
+						<legend for="departamento">Departamento</legend>
+						<select id="departamento" name="departamento" style="width:100%;" required>
+							<option selected disabled value="">Selecione...</option>
+							<option value="Enfermagem">Enfermagem</option>
+							<option value="Engenharia de Alimentos">Engenharia de Alimentos</option>
+							<option value="Engenharia Quimica">Engenharia Quimica</option>
+							<option value="Tecnologia em Produção Moveleira">Tecnologia em Produção Moveleira</option>
+							<option value="Zootecnia">Zootecnia</option>
+						</select>
+					</div>
+					<div class="input-field col s1">
+						<input type="text" id="sala" name="sala" class="validate" required>
+						<label for="sala">Sala</label>
 					</div>
 				</div>
 				<p class="center-align">
-					<button class=" btn waves-effect waves-light" type="submit" name="submit" value="confirmar">Confirmar
+					<button class=" btn waves-effect waves-light" type="submit" name="submit" onclick="changeNames()" value="confirmar">Confirmar
 						<i class="mdi-content-send right"></i>
 					</button>
 				</p>
@@ -127,7 +158,7 @@ protegeRoot();
 		<div class="footer-copyright">
 			<div class="container">
 				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
-				<a class="grey-text text-lighten-4 right">UDESC TI</a>
+				<a href="http://www.udesc.br/" class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>
 	</footer>

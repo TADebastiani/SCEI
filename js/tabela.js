@@ -11,21 +11,21 @@ $(document).ready(function(){
 })
 function changeNames(){
 	// Equipamento
-	$("table #patrimonio").text('Patrimônio');
-	$("table #servidor").text('Servidor Responsável');
-	$("table #lsetor").text('Setor');
-	$("table #lcentro").text('Centro');
-	$("table #tipo").text('Tipo');
-	$("table #descr").text('Descrição');
+	$("table #patrimonio").text("Patrimônio");
+	$("table #servidor").text("Servidor Responsável");
+	$("table #lsetor").text("Setor");
+	$("table #ldepartamento").text("Departamento");
+	$("table #tipo").text("Tipo");
+	$("table #descr").text("Descrição");
 
 	// Servidor
-	$("#nome").text('Nome');
-	$("#cargo").text('Cargo');
+	$("#nome").text("Nome");
+	$("#cargo").text("Cargo");
 
 	// Local
-	$("#sala").text('Sala');
-	$("#setor").text('Setor');
-	$("#centro").text("Centro");
+	$("#sala").text("Sala");
+	$("#setor").text("Setor");
+	$("#departamento").text("Departamento");
 
 	//Usuarios
 	$("#user_id").text("ID");

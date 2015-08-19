@@ -32,21 +32,35 @@ protegePagina(); // Chama a função que protege a página
 		<nav>
 			<div class="nav-wrapper">
 				<a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
+				<a href="#" class="brand-logo right">SCTI-CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php 
+						if( validaRoot() ) {
+						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li class="active"><a>Relatório<i class="material-icons left">pageview</i></a></li>
+						<?php
+						if( validaRoot() ) {
+						echo '<li class="divider"></li>';
+						echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+						} ?>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
-						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
@@ -64,8 +78,15 @@ protegePagina(); // Chama a função que protege a página
 								<a class="active collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li class="active"><a>Relatório<i class="material-icons left">pageview</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+										} ?>
 										<li class="divider"></li>
 									</ul>
 								</div>
@@ -74,7 +95,10 @@ protegePagina(); // Chama a função que protege a página
 								<a class="collapsible-header">Servidor<i class="material-icons left">person</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
@@ -84,7 +108,10 @@ protegePagina(); // Chama a função que protege a página
 								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
@@ -104,8 +131,8 @@ protegePagina(); // Chama a função que protege a página
 				<div class="input-field row">
 					<h5>Filtro</h5>
 					<div class="col s3">
-						<input type="radio" id="nenhum" name="filtro" value="" class="filtro" checked>
-						<label for="nenhum">Nenhum</label>
+						<input type="radio" id="todos" name="filtro" value="" class="filtro" checked>
+						<label for="todos">Todos</label>
 					</div>
 					<div class="col s3">
 						<input type="radio" id="fNobreak" name="filtro" value="Nobreak" class="filtro">
@@ -147,7 +174,7 @@ protegePagina(); // Chama a função que protege a página
 		<div class="footer-copyright">
 			<div class="container">
 				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
-				<a class="grey-text text-lighten-4 right">UDESC TI</a>
+				<a href="http://www.udesc.br/" class="grey-text text-lighten-4 right">UDESC TI</a>
 			</div>
 		</div>
 	</footer>

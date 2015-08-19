@@ -4,8 +4,8 @@ CREATE DATABASE udescti
 	DEFAULT CHARACTER SET "utf8";
 
 CREATE TABLE udescti.usuario (
-	user_id INT NOT NULL AUTO_INCREMENT,
-	username VARCHAR(30) NOT NULL,
+	user_id TINYINT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(50) NOT NULL,
 	login VARCHAR(10) NOT NULL,
 	password VARCHAR(40) NOT NULL,
 	email VARCHAR(50) NOT NULL,
@@ -21,10 +21,10 @@ CREATE TABLE udescti.servidor (
 	) DEFAULT CHARSET=utf8;
 
 CREATE TABLE udescti.local (
-	setor VARCHAR(30) NOT NULL,
-	centro VARCHAR(30) NOT NULL,
+	setor VARCHAR(40) NOT NULL,
+	departamento VARCHAR(40) NOT NULL,
 	sala INT NOT NULL,
-	CONSTRAINT local_pk PRIMARY KEY (setor,centro)
+	CONSTRAINT local_pk PRIMARY KEY (setor,departamento)
 	) DEFAULT CHARSET=utf8;
 
 CREATE TABLE udescti.equip_img (
@@ -37,14 +37,14 @@ CREATE TABLE udescti.equip_img (
 CREATE TABLE udescti.equipamento (
 	patrimonio INT NOT NULL,
 	servidor VARCHAR(30) NOT NULL,
-	lsetor VARCHAR(30) NOT NULL,
-	lcentro VARCHAR(30) NOT NULL,
+	lsetor VARCHAR(40) NOT NULL,
+	ldepartamento VARCHAR(40) NOT NULL,
 	tipo VARCHAR(15) NOT NULL,
 	descr TEXT NOT NULL,
 	imagem TINYINT NOT NULL,
 	CONSTRAINT equipamento_pk PRIMARY KEY (patrimonio),
 	CONSTRAINT equipamento_servidor_fk FOREIGN KEY (servidor) REFERENCES udescti.servidor(nome),
-	CONSTRAINT equipamento_local_fk FOREIGN KEY (lsetor, lcentro) REFERENCES udescti.local (setor, centro),
+	CONSTRAINT equipamento_local_fk FOREIGN KEY (lsetor, ldepartamento) REFERENCES udescti.local (setor, departamento),
 	CONSTRAINT equipamento_imagem_fk FOREIGN KEY (imagem) REFERENCES udescti.equip_img (img_id)
 	) DEFAULT CHARSET=utf8;
 

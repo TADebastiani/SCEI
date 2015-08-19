@@ -11,6 +11,8 @@ $(document).ready( function() {
 	
   $(".button-collapse").sideNav();
   $('.materialboxed').materialbox();
-  $(".dropdown-button").dropdown();
+  $('.dropdown-button').dropdown({
+		belowOrigin: true
+	});
   $('select').select2();
 })

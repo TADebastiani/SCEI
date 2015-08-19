@@ -28,21 +28,35 @@ protegeRoot();
 		<nav>
 			<div class="nav-wrapper">
 				<a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
+				<a href="#" class="brand-logo right">SCTI-CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php 
+						if( validaRoot() ) {
+						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<?php
+						if( validaRoot() ) {
+						echo '<li class="divider"></li>';
+						echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+						} ?>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
-						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
@@ -60,8 +74,12 @@ protegeRoot();
 								<a class=" active collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li class="active"><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>
 									</ul>
 								</div>
 							</li>
@@ -69,7 +87,10 @@ protegeRoot();
 								<a class="collapsible-header">Servidor<i class="material-icons left">person</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										
 									</ul>
@@ -79,7 +100,10 @@ protegeRoot();
 								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 									</ul>
 								</div>

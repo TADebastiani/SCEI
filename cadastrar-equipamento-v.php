@@ -7,8 +7,9 @@ if (isset($_POST["submit"])) {
 	$patrimonio = $_POST['patrimonio'];
 	$servidor = trim($_POST['servidor']);
 	$lsetor = trim($_POST['lsetor']);
-	$lcentro = trim($_POST['lcentro']);
+	$ldepartamento = trim($_POST['ldepartamento']);
 	$tipo = $_POST['tipo'];
+	$imagem = $_POST['img'];
 	$descr = '';
 
 	if ($tipo == 'Nobreak'){
@@ -52,7 +53,6 @@ if (isset($_POST["submit"])) {
 			}else{
 				$conector .= $value.', ';
 			}
-
 		}
 
 		$arrayDescr = array('Marca' => $_POST['pmarca'],
@@ -66,7 +66,7 @@ if (isset($_POST["submit"])) {
 		}
 	}
 
-	$query = "INSERT INTO udescti.equipamento VALUES ('$patrimonio','$servidor','$lsetor','$lcentro','$tipo','$descr')";
+	$query = "INSERT INTO udescti.equipamento VALUES ('$patrimonio','$servidor','$lsetor','$ldepartamento','$tipo','$descr','$imagem')";
 	query($query);
 
 	$query = "SELECT * FROM udescti.equipamento WHERE patrimonio='$patrimonio'";
@@ -78,16 +78,18 @@ if (isset($_GET['servidor'])) {
 	SelectValues(query($query));
 }
 if (isset($_GET['lsetor'])) {
-	$query = "SELECT setor FROM udescti.local group by 1";
+	$departamento = $_GET['lsetor'];
+	$query = "SELECT setor FROM udescti.local WHERE departamento='$departamento' group by 1";
 	SelectValues(query($query));
 }
-if (isset($_GET['lcentro'])) {
-	$query = "SELECT centro FROM udescti.local group by 1";
+if (isset($_GET['ldepartamento'])) {
+	$query = "SELECT departamento FROM udescti.local group by 1";
 	SelectValues(query($query));
 }
 if (isset($_GET['imagem'])) {
-	$query = "SELECT img_id FROM udescti.equip_img";
-	SelectImgValues(query($query));
+	$tipo = $_GET['imagem'];
+	$query = "SELECT img_id FROM udescti.equip_img WHERE tipo='$tipo'";
+	PrintImgTable(query($query));
 }
 
 /*

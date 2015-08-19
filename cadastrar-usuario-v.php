@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 
 	query($query);
 	$login = $arrayName['login'];
-	$query = "SELECT * FROM udescti.usuario WHERE login = '$login'";
+	$query = "SELECT username,login,email,root FROM udescti.usuario WHERE login = '$login'";
 
 	PrintTable(query($query));
 }

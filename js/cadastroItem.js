@@ -10,11 +10,11 @@ $(document).ready(function(){
 		headerInput		= $(".header-input input, .header-input select");
 		patrimonio		= $("#patrimonio");
 		lSetor 			= $("#lsetor");
-		lCentro 		= $("#lcentro");
+		lDepartamento 	= $("#ldepartamento");
 		servidor 		= $("#servidor");
 		tipo 			= $("#tipo");
 		imgButton 		= $("#img-modal");
-		imageCheck		= $(".image-check");
+		imageCheck 		= $(".image-check");
 		submit 			= $("#submit");
 		nobreak 		= $(".nobreak");
 		nobreakInput 	= $(".nobreak-input");
@@ -31,13 +31,16 @@ $(document).ready(function(){
 		moniproj.hide();
 
 		servidor.load("./cadastrar-equipamento-v.php?servidor='true'");
-		lSetor.load("./cadastrar-equipamento-v.php?lsetor='true'");
-		lCentro.load("./cadastrar-equipamento-v.php?lcentro='true'");
+		lDepartamento.load("./cadastrar-equipamento-v.php?ldepartamento='true'");
+		lDepartamento.on("change", function () {
+			lSetor.load("./cadastrar-equipamento-v.php?lsetor="+lDepartamento.val());
+		});
 
 		$('input, select').on('change', enableSubmit);
-
+		
 		tipo.on('change', function () {
 			imgButton.attr('disabled')? imgButton.attr('disabled',false) : false;
+			changeImg(tipo.val());
 			submit.show();
 
 			if (tipo.val() == 'Nobreak') {
@@ -115,14 +118,17 @@ $(document).ready(function(){
   		dismissible: false
   });
   $('.materialboxed').materialbox();
-  $(".dropdown-button").dropdown();
+  $('.dropdown-button').dropdown({
+		belowOrigin: true
+	});
   $('select').select2();
 
 });
 
 function enableSubmit () {
 	// Easy way
-	
+	imageCheck = $(".image-check");
+
 	if( checkInputs(headerInput) && imageCheck.is(':checked') &&//
 	  ( checkInputs(nobreakInput) || //
 	  (checkInputs(pcnotInput) && inputDrive.is(':checked')) || //
@@ -145,19 +151,29 @@ function enableSubmit () {
 }
 
 function checkInputs (input) {
-	var state;
+	var state = 0;
 	
 	input.each(function() {
-		if( $(this).val() ){
-			state = true;
+		if( $(this).val()){
+			state ++;
 		}else {
-			state = false;
+			state --;
 		}
 	})
-
-	return state;
+	
+	if (state < input.length){
+		return false;
+	} else {
+		return true;
+	}
 }
 
+function changeImg(tipo) {
+	$.get("./cadastrar-equipamento-v.php?imagem="+tipo, function(data, status) {
+		$('#img-table').html(data);
+		changeNames();
+	});	
+}
 /* Harder way
 
 function disableSubmit() {

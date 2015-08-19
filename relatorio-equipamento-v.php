@@ -7,7 +7,7 @@
 			$query = "SELECT * FROM udescti.equipamento WHERE tipo='$filtro'";
 			ShowTable($query);
 		} else {
-			$query = "SELECT * FROM udescti.equipamento"; #JOIN SELECT img_id,imagem FROM udescti.equip_img WHERE img_id='18'";
+			$query = "SELECT * FROM udescti.equipamento";
 			ShowTable($query);
 		}
 	}
@@ -24,7 +24,7 @@
 	}
 
 	function ShowTable($query) {
-		PrintTable(query($query));
+		PrintEquipTable(query($query));
 		$numRows = mysqli_num_rows(query($query));
 		echo "<div class=\"divider\"></div>";
 		echo "<br>".($numRows>0? $numRows: "Nenhum")." ".($numRows > 1? "items.":"item.");

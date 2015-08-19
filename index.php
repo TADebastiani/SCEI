@@ -1,7 +1,7 @@
 <?php
 include "seguranca.php"; // Inclui o arquivo com o sistema de segurança
 protegePagina(); // Chama a função que protege a página
- ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@ protegePagina(); // Chama a função que protege a página
 	<meta charset="utf-8">
 	<!-- jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	 <!-- Materialize -->
+	<!-- Materialize -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
@@ -23,21 +23,35 @@ protegePagina(); // Chama a função que protege a página
 		<nav>
 			<div class="nav-wrapper">
 				<a href="#" data-activates="mobile-sidenav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-				<a href="#" class="brand-logo right">UDESC TI - CEO</a>
+				<a href="#" class="brand-logo right">SCTI-CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php 
+						if( validaRoot() ) {
+						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';;
+						} ?>
 						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<?php
+						if( validaRoot() ) {
+						echo '<li class="divider"></li>';
+						echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+						} ?>
 					</ul>
 					<ul id="drop-servidor" class="dropdown-content">
-						<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li class="active"><a href="#">Home<i class="material-icons left">home</i></a></li>
@@ -46,7 +60,7 @@ protegePagina(); // Chama a função que protege a página
 					<li><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
-			<!-- MOBILE -->
+				<!-- MOBILE -->
 				<ul id="mobile-sidenav" class="side-nav">
 					<li class="active"><a href="#">Home<i class="material-icons left">home</i></a></li>
 					<li class="no-padding">
@@ -55,27 +69,40 @@ protegePagina(); // Chama a função que protege a página
 								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
+										} ?>
 										<li class="divider"></li>
 									</ul>
 								</div>
 							</li>
-							<li>
+							<li class="bold">
 								<a class="collapsible-header">Servidor<i class="material-icons left">person</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-servidor.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
 								</div>
 							</li>
-							<li>
+							<li class="bold">
 								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
@@ -90,41 +117,39 @@ protegePagina(); // Chama a função que protege a página
 	</header>
 
 	<main>
-	<div class="container">
-		<img class="responsive-img" src="./img/logo_udesc_ceo.png">
-		
-		<?php 
-		if( validaRoot() ) {
-			echo "<div class=\"row\">
-					<div class=\"col s12 m7\">
-					  <div class=\"card\">
-						<div class=\"card-content\">
-						  <pan class=\"card-title black-text\"><h4>Ferramentas Admnistrativas</h4></span>
-						  <div class='col s12 m12 l6 collection with-header'>
-						  	<h5 class='collection-header'>Usuários</h5>
-						  	<a class='collection-item' href=\"./cadastrar-usuario.php\">Criar</a>
-						  	<a class='collection-item' href=\"./gerenciar-usuario.php\">Gerenciar</a>
-						  </div>
-						  </div>
-					  </div>
-					</div>
-				  </div>";	
-		}
+		<div class="container">
+			<img class="responsive-img" src="./img/logo_udesc_ceo.png">
+
+			<?php 
+			if( validaRoot() ) {
+				echo  "<div class='row'>
+						<ul class='col m12 s12 l6 collapsible popout' data-collapsible='accordion'>
+							<li>
+								<div class='collapsible-header'><i class='material-icons'>filter_drama</i>Ferramentas de Usuários</div>
+								<div class='collapsible-body'>
+									<div class='collection'>
+										<a class='collection-item' href='./cadastrar-usuario.php'>Criar</a>
+										<a class='collection-item' href='./gerenciar-usuario.php'>Gerenciar</a>
+									</div>
+								</div>
+							</li>
+						</ul>";
+			}
 		?>
 	</div>
-	</main>
-	<footer class="page-footer">
+</main>
+<footer class="page-footer">
+	<div class="container">
+		<div class="row">
+			<span class="grey-text text-lighten-4"><?php echo "Usuário <span class='grey-text text-lighten-2'>".$_SESSION['usuarioNome']."</span> conectado ".($_SESSION['usuarioRoot']=='Y'? 'com' : 'sem')." direitos de Administrador" ?></span>
+		</div>
+	</div>
+	<div class="footer-copyright">
 		<div class="container">
-			<div class="row">
-				<span class="grey-text text-lighten-4"><?php echo "Usuário <span class='grey-text text-lighten-2'>".$_SESSION['usuarioNome']."</span> conectado ".($_SESSION['usuarioRoot']=='Y'? 'com' : 'sem')." direitos de Administrador" ?></span>
-			</div>
+			Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
+			<a href="http://www.udesc.br/" class="grey-text text-lighten-4 right">UDESC TI</a>
 		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Copyright © <?php echo date("Y"); ?> <a class="grey-text text-lighten-2" href="https://github.com/TADebastiani">Tiago Debastiani</a>.
-				<a class="grey-text text-lighten-4 right">UDESC TI</a>
-			</div>
-		</div>
-	</footer>
+	</div>
+</footer>
 </body>
 </html>
