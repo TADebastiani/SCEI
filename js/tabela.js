@@ -27,12 +27,16 @@ function changeNames(){
 	$("#setor").text("Setor");
 	$("#departamento").text("Departamento");
 
-	//Usuarios
+	// Usuarios
 	$("#user_id").text("ID");
 	$("#username").text("Nome do Usuário");
 	$("#login").text("Login");
 	$("#password").text("Senha (criptografada)");
 	$("#email").text("E-mail");
 	$("#root").text("Administrador");
+
+	// Historico
+	$("table #data").text("Data");
+	$("#hdescr").text("Descrição");
 }
 

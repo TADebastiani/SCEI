@@ -1,26 +1,31 @@
 <?php
 include "seguranca.php"; // Inclui o arquivo com o sistema de segurança
 protegePagina(); // Chama a função que protege a página
-protegeRoot();
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset='utf-8'>
 	<!-- jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Validation Plugin -->
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
 	 <!-- Materialize -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+	<!-- Tablesorter -->
+	<script src="./tablesorter/jquery.tablesorter.js"></script>
+	<link rel="stylesheet" href="./tablesorter/themes/blue/custom_style.css">
 	<!-- Select2 -->
 	<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<!-- Custom -->
 	<script src="./js/tabela.js"></script>
 	<script src="./js/index.js"></script>
+	<script src="./js/historico-equipamento.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>Cadastro de Local</title>
+	<title>Histórico de Manutenção dos Equipamentos</title>
 </head>
 <body>
 	<header>
@@ -35,7 +40,7 @@ protegeRoot();
 						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
 						echo '<li class="divider"></li>';
 						} ?>
-						<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+						<li><a>Relatório<i class="material-icons left">pageview</i></a></li>
 						<?php
 						if( validaRoot() ) {
 						echo '<li class="divider"></li>';
@@ -51,30 +56,33 @@ protegeRoot();
 						<li><a href="./relatorio-servidor.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>
 					<ul id="drop-local" class="dropdown-content">
-						<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
-						<li class="divider"></li>
+						<?php
+						if ( validaRoot() ) {
+						echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+						echo '<li class="divider"></li>';
+						} ?>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 					</ul>		
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
-					<li><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
+					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-servidor">Servidor<i class="material-icons left">person</i><i class="material-icons right">arrow_drop_down</i></a></li>
-					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
-					<li><a href="logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
+					<li><a class="dropdown-button" href="#!" data-activates="drop-local">Local<i class="material-icons left">store</i><i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
 			<!-- MOBILE -->
 				<ul id="mobile-sidenav" class="side-nav">
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li class="no-padding">
 						<ul id="coll-equipamentos" class="collapsible collapsible-accordion">
-							<li class="bold">
-								<a class="collapsible-header">Equipamentos<i class="material-icons">work</i></a>
+							<li>
+								<a class="active collapsible-header">Equipamentos<i class="material-icons">work</i></a>
 								<div class="collapsible-body">
 									<ul>
 										<?php
 										if ( validaRoot() ) {
 										echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
 										} ?>
-										<li><a href="./relatorio-equipamento.php">Relatório<i class="material-icons left">pageview</i></a></li>
+										<li><a>Relatório<i class="material-icons left">pageview</i></a></li>
 										<?php
 										if ( validaRoot() ) {
 										echo '<li><a href="./cadastrar-imagem.php">Imagens<i class="material-icons left">collections</i></a></li>';
@@ -97,10 +105,13 @@ protegeRoot();
 								</div>
 							</li>
 							<li>
-								<a class="active collapsible-header">Local<i class="material-icons left">store</i></a>
+								<a class="collapsible-header">Local<i class="material-icons left">store</i></a>
 								<div class="collapsible-body">
 									<ul>
-										<li class="active"><a>Cadastro<i class="material-icons left">assignment</i></a></li>
+										<?php
+										if ( validaRoot() ) {
+										echo '<li><a href="./cadastrar-local.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
+										} ?>
 										<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
 										<li class="divider"></li>
 									</ul>
@@ -108,44 +119,35 @@ protegeRoot();
 							</li>
 						</ul>		
 					</li>
-					<li><a href="logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
+					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<main>
 		<div class="container">
-			<h1 class="header">Cadastro de Local</h1>
-			<form method="post" class="col s12">
-				<div class="row">
-					<div class="input-field col s5">
-						<input type="text" id="setor" name="setor" class="validate" required>
-						<label for="setor">Setor</label>
-					</div>
-					<div class="input-field col s6">
-						<legend for="dpto">Departamento</legend>
-						<select id="dpto" name="departamento" style="width:100%;" required>
-							<option selected disabled value="">Selecione...</option>
-							<option value="Enfermagem">Enfermagem</option>
-							<option value="Engenharia de Alimentos">Engenharia de Alimentos</option>
-							<option value="Engenharia Quimica">Engenharia Quimica</option>
-							<option value="Tecnologia em Produção Moveleira">Tecnologia em Produção Moveleira</option>
-							<option value="Zootecnia">Zootecnia</option>
-						</select>
-					</div>
-					<div class="input-field col s1">
-						<input type="text" id="sala" name="sala" class="validate" required>
-						<label for="sala">Sala</label>
-					</div>
+			<h2 class="header">Histórico de Manutenção dos Equipamentos</h2>
+			<button data-target="novo" class="btn waves-effect waves-light modal-trigger">Modal</button>
+			<div id="novo" class="modal">
+				<div class="modal-content">
+					<h4>Novo Histórico</h4>
+					<form method="post">
+						<div class="input-field row col s12">
+							<input type="date" class="datepicker" name="nvdata" id="nvdata">
+							<label for="nvdata">Data da Manutenção</label>
+						</div>
+						<div class="input-field row col s12">
+							<textarea id="nvdescr" class="materialize-textarea"></textarea>
+							<label for="nvdescr">O que foi feito?</label>
+						</div>
+					</form>
 				</div>
-				<p class="center-align">
-					<button class=" btn waves-effect waves-light" type="submit" name="submit" onclick="changeNames()" value="confirmar">Confirmar
-						<i class="mdi-content-send right"></i>
-					</button>
-				</p>
-			</form>
-			<div>
-				<?php require 'cadastrar-local-v.php'; ?>
+				<div class="modal-footer">
+					<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+				</div>
+			</div>
+			<div id="tabela">
+				<?php require_once 'historico-equipamento-v.php'; ?>
 			</div>
 		</div>
 	</main>

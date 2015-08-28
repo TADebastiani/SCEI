@@ -69,6 +69,7 @@
 				$name = mysqli_fetch_field($result)->name;
 				echo "<th id='".$name."'>" . $name . "</th>"; 
 			}
+			echo "<th id='historico'>Histórico</th>";
 			echo "</tr> 
 				</thead> 
 				<tbody>"; 
@@ -81,6 +82,9 @@
 					echo "<td>" . $row[$j] . "</td>"; 
 				} 
 				echo "<td><img class='materialboxed responsive-img' src='./ver-imagens.php?id=" . $row[$j] . "'></td>"; 
+				if ($_SESSION['usuarioRoot'] == 'Y'){
+					echo "<td><a href='./historico-equipamento.php?patrimonio=".$row[0]."'>Histórico</td>";
+				}
 				echo "</tr>"; 
 			} 
 			echo "</tbody> 

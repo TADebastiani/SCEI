@@ -33,7 +33,7 @@ $(document).ready(function(){
 		servidor.load("./cadastrar-equipamento-v.php?servidor='true'");
 		lDepartamento.load("./cadastrar-equipamento-v.php?ldepartamento='true'");
 		lDepartamento.on("change", function () {
-			lSetor.load("./cadastrar-equipamento-v.php?lsetor="+lDepartamento.val());
+			lSetor.load("./cadastrar-equipamento-v.php?lsetor="+escape(lDepartamento.val()));
 		});
 
 		$('input, select').on('change', enableSubmit);
@@ -136,6 +136,7 @@ function enableSubmit () {
 	  	console.log('yep');
 		submit.attr('disabled',false);
 	} else {
+		/*
 		console.clear();
 		console.log("header: "+checkInputs(headerInput));
 		console.log("image: "+imageCheck.is(':checked'));
@@ -144,6 +145,7 @@ function enableSubmit () {
 		console.log("drive: "+inputDrive.is(':checked'));
 		console.log("moniproj: "+checkInputs(moniprojInput));
 		console.log("conector: "+inputConector.is(':checked'));
+		*/
 		console.log('nope');
 		submit.attr('disabled',true);
 	}

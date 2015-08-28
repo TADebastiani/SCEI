@@ -16,7 +16,7 @@ protegePagina(); // Chama a função que protege a página
 	<!-- Custom -->
 	<script src="./js/index.js"></script>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<title>UDESC TI - CEO</title>
+	<title>SCTI - CEO</title>
 </head>
 <body>
 	<header>

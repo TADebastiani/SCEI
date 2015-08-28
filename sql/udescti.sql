@@ -50,7 +50,7 @@ CREATE TABLE udescti.equipamento (
 
 CREATE TABLE udescti.historico (
 	patrimonio INT NOT NULL,
-	data DATE NOT NULL,
+	data DATETIME NOT NULL,
 	hdescr TEXT NOT NULL,
 	CONSTRAINT historico_pk PRIMARY KEY (patrimonio, data),
 	CONSTRAINT historico_equipamento_fk FOREIGN KEY (patrimonio) REFERENCES udescti.equipamento(patrimonio)
