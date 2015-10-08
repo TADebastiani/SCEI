@@ -128,23 +128,32 @@ protegePagina(); // Chama a função que protege a página
 		<div class="container">
 			<h2 class="header">Relatório dos Equipamentos</h2>
 			<form method="post">
+				<fieldset>
+					<legend>Filtro</legend>
 				<div class="input-field row">
-					<h5>Filtro</h5>
-					<div class="col s3">
+					<div class="col s2">
 						<input type="radio" id="todos" name="filtro" value="" class="filtro" checked>
 						<label for="todos">Todos</label>
 					</div>
-					<div class="col s3">
+					<div class="col s2">
 						<input type="radio" id="fNobreak" name="filtro" value="Nobreak" class="filtro">
 						<label for="fNobreak">Nobreak</label>
 					</div>
-					<div class="col s3">
+					<div class="col s2">
 						<input type="radio" id="fPC" name="filtro" value="PC" class="filtro">
 						<label for="fPC">PC</label>
 					</div>
-					<div class="col s3">
+					<div class="col s2">
 						<input type="radio" id="fMonitor" name="filtro" value="Monitor" class="filtro">
 						<label for="fMonitor">Monitor</label>
+					</div>
+					<div class="col s2">
+						<input type="radio" id="fProjetor" name="filtro" value="Projetor" class="filtro">
+						<label for="fProjetor">Projetor</label>
+					</div>
+					<div class="col s2">
+						<input type="radio" id="fTelefone" name="filtro" value="Telefone" class="filtro">
+						<label for="fTelefone">Telefone</label>
 					</div>
 				</div>
 				<div class="row">
@@ -159,6 +168,7 @@ protegePagina(); // Chama a função que protege a página
 						</button>
 					</p>
 				</div>
+				</fieldset>
 			</form>
 			<div id="tabela">
 				<?php require_once 'relatorio-equipamento-v.php'; ?>

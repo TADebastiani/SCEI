@@ -5,7 +5,6 @@ protegePagina(); // Chama a função que protege a página
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv=\"refresh\" content=\"1; url=authentication.php?url=index.php\">
 	<meta charset="utf-8">
 	<!-- jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

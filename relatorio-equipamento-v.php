@@ -11,7 +11,7 @@
 			ShowTable($query);
 		}
 	}
-
+	
 	if (isset($_GET['patrimonio'])){
 		$query = "SELECT patrimonio FROM udescti.equipamento";
 		SelectValues(query($query));

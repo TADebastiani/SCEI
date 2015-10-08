@@ -55,3 +55,12 @@ CREATE TABLE udescti.historico (
 	CONSTRAINT historico_pk PRIMARY KEY (patrimonio, data),
 	CONSTRAINT historico_equipamento_fk FOREIGN KEY (patrimonio) REFERENCES udescti.equipamento(patrimonio)
 	) DEFAULT CHARSET=utf8;
+
+CREATE TABLE udescti.log (
+	log_id INT NOT NULL AUTO_INCREMENT,
+	data DATETIME NOT NULL,
+	usuario TINYINT NOT NULL,
+	descricao TEXT NOT NULL,
+	CONSTRAINT log_pk PRIMARY KEY (log_id),
+	CONSTRAINT log_usuario_fk FOREIGN KEY (usuario) REFERENCES udescti.usuario (user_id)
+	) DEFAULT CHARSET=utf8;

@@ -56,30 +56,36 @@
 				}
 			}
 		}
+
+		$query = "UPDATE udescti.usuario SET ";
+		$i=0; //controle para saber qual o último índice de $valores
+		$hDescr = "Alterado ";
 		
 		foreach ($valores as $key => $value) {
 			//echo $key.": ".$value."<br>";
 		
 			if ($key != 'user_id'){
 				if ($valorTupla[$key] != $value){
-					$query = "UPDATE udescti.usuario SET ";
-					$i=0;
-					foreach ($valores as $key => $value) {
-						if ($i == sizeof($valores)-1){
-							$query .= "$key='$value' ";
-						}else {
-							$query .= "$key='$value', ";
-						}
-						$i++;
+					if ($i == sizeof($valores)-1){
+						$query .= "$key='$value' ";
+						$hDescr .= $key;
+					}else {
+						$query .= "$key='$value', ";
+						$hDescr .= $key.", ";
 					}
-					$query .= "WHERE user_id='$userid'";
-
-					//echo $query;
-					query($query);
+					$i++;
 				}
 			}
-			header("Location: ./gerenciar-usuario.php");
 		}
-	}
+		$query .= "WHERE user_id='$userid'";
+		echo $query."<br>";
+		query($query);
 
- ?>
+		$hDescr .= " do usuário ".$userid;
+		$data = date('Y-m-d H:i:s');
+		echo $hDescr;
+		$log = "INSERT INTO udescti.log (data,usuario,descricao) VALUES ('$data','$_SESSION[usuarioID]','$hDescr')";
+		query($log);
+		header("Location: ./gerenciar-usuario.php");
+	}
+?>
