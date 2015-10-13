@@ -2,7 +2,7 @@ $(document).ready(function(){
 	try {
 		$("table").tablesorter();
 	} catch(e){
-			
+
 	}
 
 	changeNames();
@@ -17,6 +17,7 @@ function changeNames(){
 	$("table #ldepartamento").text("Departamento");
 	$("table #tipo").text("Tipo");
 	$("table #descr").text("Descrição");
+	$("table #imagem").text("Imagem");
 
 	// Servidor
 	$("#nome").text("Nome");
@@ -39,4 +40,3 @@ function changeNames(){
 	$("table #data").text("Data");
 	$("#hdescr").text("Descrição");
 }
-

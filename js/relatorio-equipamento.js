@@ -1,18 +1,19 @@
 $(document).ready( function() {
-	$('#patrimonio').on('change', function(){
-		value = $(this).val();
-		$.get("./relatorio-equipamento-v.php?filtro="+value, function(data, status) {
-			$('#tabela').html(data);
-			changeNames();
-		});
-	})
-	
-	$("#patrimonio").load("./relatorio-equipamento-v.php?patrimonio=true");
-	
+
+	$('#filterby, .filtro').on('change', changeSelect);
+
   $(".button-collapse").sideNav();
   $('.materialboxed').materialbox();
   $('.dropdown-button').dropdown({
 		belowOrigin: true
 	});
   $('select').select2();
-})
+});
+
+function changeSelect(){
+	filterby = $("#filterby").val();
+	filtro = $(".filtro:checked").val();
+	$.get("./relatorio-equipamento-v.php?filterby="+filterby+"&filtro="+filtro, function(data, status) {
+		$('#selecao').html(data);
+	});
+}

@@ -35,7 +35,7 @@ protegePagina(); // Chama a função que protege a página
 				<a href="#" class="brand-logo right">SCTI-CEO</a>
 				<ul id="nav-mobile" class="left hide-on-med-and-down">
 					<ul id="drop-equipamentos" class="dropdown-content">
-						<?php 
+						<?php
 						if( validaRoot() ) {
 						echo '<li><a href="./cadastrar-equipamento.php">Cadastro<i class="material-icons left">assignment</i></a></li>';
 						echo '<li class="divider"></li>';
@@ -62,7 +62,7 @@ protegePagina(); // Chama a função que protege a página
 						echo '<li class="divider"></li>';
 						} ?>
 						<li><a href="./relatorio-local.php">Relatório<i class="material-icons left">pageview</i></a></li>
-					</ul>		
+					</ul>
 					<li><a href="./index.php">Home<i class="material-icons left">home</i></a></li>
 					<li class="active"><a class="dropdown-button" href="#!" data-activates="drop-equipamentos">Equipamentos<i class="material-icons left">work</i><i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a class="dropdown-button" href="#!" data-activates="drop-servidor">Servidor<i class="material-icons left">person</i><i class="material-icons right">arrow_drop_down</i></a></li>
@@ -117,7 +117,7 @@ protegePagina(); // Chama a função que protege a página
 									</ul>
 								</div>
 							</li>
-						</ul>		
+						</ul>
 					</li>
 					<li><a href="./logout.php">Logout<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
@@ -158,11 +158,21 @@ protegePagina(); // Chama a função que protege a página
 				</div>
 				<div class="row">
 					<div class="input-field col s4">
-						<legend for="local">Patrimonio</legend>
-						<select type="text" id="patrimonio" name="patrimonio" style='width:100%;' required>
+						<legend for="filterby">Filtrar por:</legend>
+						<select type="text" id="filterby" name="filterby" style='width:100%;' required>
+						<option selected>Todos</option>
+						<option value="patrimonio">Patrimonio</option>
+						<option value="servidor">Servidor</option>
+            <option value="lsetor">Setor</option>
+            <option value="ldepartamento">Departamento</option>
 						</select>
 					</div>
-					<p class="right-align col s8">
+					<div class="input-field col s4">
+						<legend for="selecao">Seleção</legend>
+						<select type="text" id="selecao" name="selecao" style='width:100%;' >
+						</select>
+					</div>
+					<p class="right-align col s4">
 						<button class=" btn-large waves-effect waves-light" type="submit" id="filtrar" name="filtrar" value="confirmar">Confirmar
 							<i class="mdi-content-send right"></i>
 						</button>
